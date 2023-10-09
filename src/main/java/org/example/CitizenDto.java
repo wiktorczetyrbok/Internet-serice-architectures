@@ -1,13 +1,13 @@
 package org.example;
 
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
+@Data
 @Builder
 public class CitizenDto implements Serializable {
     String name;
