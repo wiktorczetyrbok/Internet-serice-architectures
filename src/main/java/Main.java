@@ -1,14 +1,13 @@
-import org.example.City;
 import org.example.DataLoader;
-import org.example.Citizen;
 import org.example.Task;
+import org.example.model.Citizen;
+import org.example.model.City;
 
 import java.util.List;
 
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-
         List<Citizen> listOfCitizens = DataLoader.loadCitizens();
         List<City> listOfCities = DataLoader.loadCities();
 

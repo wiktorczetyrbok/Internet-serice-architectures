@@ -1,5 +1,9 @@
 package org.example;
 
+import org.example.dto.CitizenDto;
+import org.example.model.Citizen;
+import org.example.model.City;
+
 import java.io.*;
 import java.util.Comparator;
 import java.util.List;
@@ -10,17 +14,17 @@ import java.util.stream.Collectors;
 public class Task {
 
     public void taskTwo(List<City> listOfCities) {
-        listOfCities.forEach(company -> {
-            System.out.print(company.getName() + ": \n");
-            company.getCitizens().forEach(hardware -> {
-                System.out.print(hardware.getName() + " " + hardware.getAge() + " ");
+        listOfCities.forEach(city -> {
+            System.out.print(city.getName() + ": \n");
+            city.getCitizens().forEach(citizen -> {
+                System.out.print(citizen.getName() + " " + citizen.getAge() + " ");
             });
         });
     }
 
     public void taskThree(List<City> listOfCities) {
         listOfCities.stream()
-                .flatMap(company -> company.getCitizens().stream())
+                .flatMap(city -> city.getCitizens().stream())
                 .collect(Collectors.toSet()).forEach(System.out::println);
     }
 
@@ -34,8 +38,8 @@ public class Task {
     public void taskFive(List<Citizen> listOfCitizens) {
         listOfCitizens.stream()
                 .map(Mapper::mapToCitizenDto)
-                .sorted(Comparator.comparing(CitizenDto::getName).reversed()
-                        .thenComparingInt(CitizenDto::getCost).reversed())
+                .sorted(Comparator.comparing((CitizenDto::getName))
+                        .thenComparingInt(CitizenDto::getCost))
                 .forEach(System.out::println);
     }
 
@@ -45,8 +49,8 @@ public class Task {
 
             objectOutputStream.writeObject(listOfCitizens);
 
-            List<Citizen> hdlist = (List<Citizen>) objectInputStream.readObject();
-            hdlist.forEach(System.out::println);
+            List<Citizen> citizenList = (List<Citizen>) objectInputStream.readObject();
+            citizenList.forEach(System.out::println);
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -58,10 +62,10 @@ public class Task {
         ForkJoinPool threadPool = new ForkJoinPool(customThreadPoolSize);
         try {
             threadPool.submit(() ->
-                    listOfCities.parallelStream().forEach(company -> {
+                    listOfCities.parallelStream().forEach(city -> {
                         try {
                             Thread.sleep(1000);
-                            System.out.println(company.getName());
+                            System.out.println(city.getName());
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

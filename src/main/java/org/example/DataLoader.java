@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.model.Citizen;
+import org.example.model.City;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +16,6 @@ public class DataLoader {
     }
 
     public static List<Citizen> loadCitizens() {
-
         List<Citizen> listOfCitizens = new ArrayList<>();
         listOfCitizens.add(Citizen.builder().name("Jeff Eng").age(24).city(null).build());
         listOfCitizens.add(Citizen.builder().name("Senthil gopsalym").age(120).city(null).build());
