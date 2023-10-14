@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.dto.CitizenDto;
+import org.example.model.Citizen;
+
 public class Mapper {
     public static CitizenDto mapToCitizenDto(Citizen citizen) {
 
