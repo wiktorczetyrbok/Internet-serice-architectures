@@ -20,11 +20,11 @@ import java.util.stream.Collectors;
 public class City implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    UUID id;
-    String name;
-    double area;
+    private UUID id;
+    private String name;
+    private double area;
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    List<Citizen> citizens;
+    private List<Citizen> citizens;
 
 
     @Override

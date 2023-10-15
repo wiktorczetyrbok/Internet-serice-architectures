@@ -18,12 +18,12 @@ import java.util.UUID;
 public class Citizen implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    UUID id;
-    String name;
-    int age;
+    private UUID id;
+    private String name;
+    private int age;
     @ManyToOne
     @JoinColumn(name = "city_id")
-    City city;
+    private City city;
 
     @Override
     public String toString() {

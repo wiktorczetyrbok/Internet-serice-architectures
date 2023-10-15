@@ -9,8 +9,8 @@ import java.util.UUID;
 @Data
 @Builder
 public class CitizenDto implements Serializable {
-    UUID id;
-    String name;
-    int age;
-    String cityName;
+    private UUID id;
+    private String name;
+    private int age;
+    private String cityName;
 }

@@ -11,10 +11,10 @@ import java.util.UUID;
 @Data
 @Builder
 public class CityDto {
-    UUID id;
-    String name;
-    double area;
-    List<Citizen> citizens;
+    private UUID id;
+    private String name;
+    private double area;
+    private List<Citizen> citizens;
 
     public List<Citizen> getCitizens() {
         return citizens == null ? new ArrayList<>() : citizens;
