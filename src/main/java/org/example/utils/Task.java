@@ -1,6 +1,7 @@
-package org.example;
+package org.example.utils;
 
 import org.example.dto.CitizenDto;
+import org.example.mapper.CitizenMapper;
 import org.example.model.Citizen;
 import org.example.model.City;
 
@@ -37,9 +38,9 @@ public class Task {
 
     public void taskFive(List<Citizen> listOfCitizens) {
         listOfCitizens.stream()
-                .map(Mapper::mapToCitizenDto)
+                .map(CitizenMapper::mapToCitizenDto)
                 .sorted(Comparator.comparing((CitizenDto::getName))
-                        .thenComparingInt(CitizenDto::getCost))
+                        .thenComparingInt(CitizenDto::getAge))
                 .forEach(System.out::println);
     }
 
