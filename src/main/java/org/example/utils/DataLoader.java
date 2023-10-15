@@ -1,4 +1,4 @@
-package org.example;
+package org.example.utils;
 
 import org.example.model.Citizen;
 import org.example.model.City;
@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataLoader {
-    public static void loadCompaniesToHardware(List<Citizen> listOfCitizens,
-                                               List<City> listOfCompanies) {
+    public static void loadCitizensToCities(List<Citizen> listOfCitizens,
+                                            List<City> listOfCities) {
         for (int i = 0; i < listOfCitizens.size(); i++) {
-            listOfCitizens.get(i).setCity(listOfCompanies.get(i % listOfCompanies.size()));
-            listOfCompanies.get(i % listOfCompanies.size()).getCitizens().add(listOfCitizens.get(i));
+            listOfCitizens.get(i).setCity(listOfCities.get(i % listOfCities.size()));
+            listOfCities.get(i % listOfCities.size()).getCitizens().add(listOfCitizens.get(i));
         }
     }
 
@@ -29,13 +29,12 @@ public class DataLoader {
 
 
     public static List<City> loadCities() {
-        List<City> listOfCompanies = new ArrayList<>();
-        listOfCompanies.add(City.builder().name("Gdansk").area(21312321).citizens(new ArrayList<>()).build());
-        listOfCompanies.add(City.builder().name("Torun").area(15756657).citizens(new ArrayList<>()).build());
-        listOfCompanies.add(City.builder().name("Gizyko").area(30232133).citizens(new ArrayList<>()).build());
-        listOfCompanies.add(City.builder().name("Krakow").area(10123123).citizens(new ArrayList<>()).build());
-
-        return listOfCompanies;
+        List<City> listOfCities = new ArrayList<>();
+        listOfCities.add(City.builder().name("Gdansk").area(21312321).citizens(new ArrayList<>()).build());
+        listOfCities.add(City.builder().name("Torun").area(15756657).citizens(new ArrayList<>()).build());
+        listOfCities.add(City.builder().name("Gizyko").area(30232133).citizens(new ArrayList<>()).build());
+        listOfCities.add(City.builder().name("Krakow").area(10123123).citizens(new ArrayList<>()).build());
+        return listOfCities;
     }
 
 

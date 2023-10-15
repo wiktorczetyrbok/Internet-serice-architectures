@@ -4,11 +4,13 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 @Data
 @Builder
 public class CitizenDto implements Serializable {
-    String name;
-    int cost;
-    String cityName;
+    private UUID id;
+    private String name;
+    private int age;
+    private String cityName;
 }
