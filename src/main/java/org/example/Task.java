@@ -8,7 +8,6 @@ import java.io.*;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public class Task {
@@ -16,9 +15,7 @@ public class Task {
     public void taskTwo(List<City> listOfCities) {
         listOfCities.forEach(city -> {
             System.out.print(city.getName() + ": \n");
-            city.getCitizens().forEach(citizen -> {
-                System.out.print(citizen.getName() + " " + citizen.getAge() + " ");
-            });
+            city.getCitizens().forEach(citizen -> System.out.print(citizen.getName() + " " + citizen.getAge() + " "));
         });
     }
 
@@ -57,10 +54,9 @@ public class Task {
         }
     }
 
-    public void taskSeven(List<City> listOfCities) throws InterruptedException {
+    public void taskSeven(List<City> listOfCities) {
         int customThreadPoolSize = 3;
-        ForkJoinPool threadPool = new ForkJoinPool(customThreadPoolSize);
-        try {
+        try (ForkJoinPool threadPool = new ForkJoinPool(customThreadPoolSize)) {
             threadPool.submit(() ->
                     listOfCities.parallelStream().forEach(city -> {
                         try {
@@ -72,9 +68,6 @@ public class Task {
                     }));
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            threadPool.shutdown();
         }
-        threadPool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
     }
 }

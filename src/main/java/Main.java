@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         List<Citizen> listOfCitizens = DataLoader.loadCitizens();
         List<City> listOfCities = DataLoader.loadCities();
 
