@@ -9,4 +9,6 @@ public interface CityService {
     void addCity(City city);
 
     List<CityDto> getAllCities();
+
+    City getCityByName(String cityName);
 }

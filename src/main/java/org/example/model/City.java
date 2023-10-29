@@ -23,7 +23,7 @@ public class City implements Serializable {
     private UUID id;
     private String name;
     private double area;
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Citizen> citizens;
 
 

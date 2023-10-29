@@ -11,4 +11,6 @@ public interface CitizenService {
     void addCitizen(Citizen citizen);
 
     List<CitizenDto> getAllCitizens();
+
+    void deleteCitizen(Citizen selectedCitizen);
 }

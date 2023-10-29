@@ -27,13 +27,17 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public List<CityDto> getAllCities() {
-        System.out.println(cityRepository
-                .findAll());
+        System.out.println(cityRepository.findAll());
         return cityRepository
                 .findAll()
                 .stream()
                 .map(CityMapper::mapToCityDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public City getCityByName(String cityName) {
+        return cityRepository.getCityByName(cityName);
     }
 
 }

@@ -12,4 +12,6 @@ public interface CityRepository extends JpaRepository<City, UUID> {
 
     @Override
     List<City> findAll();
+
+    City getCityByName(String name);
 }
