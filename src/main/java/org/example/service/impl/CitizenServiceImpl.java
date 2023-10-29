@@ -43,10 +43,9 @@ public class CitizenServiceImpl implements CitizenService {
     public List<CitizenDto> getAllCitizens() {
         List<Citizen> citizens = citizenRepository.findAll();
 
-        List<CitizenDto> collect = citizens.stream()
+        return citizens.stream()
                 .map(CitizenMapper::mapToCitizenDto)
                 .collect(Collectors.toList());
-        return collect;
     }
 
     @Override

@@ -29,8 +29,8 @@ public class DataLoader {
 
         loadCitizensToCities(listOfCitizens, listOfCities);
 
-        listOfCities.forEach(city -> cityRepository.save(city));
-        listOfCitizens.forEach(c -> citizenRepository.save(c));
+        cityRepository.saveAll(listOfCities);
+        citizenRepository.saveAll(listOfCitizens);
     }
 
     private static void loadCitizensToCities(List<Citizen> listOfCitizens,
