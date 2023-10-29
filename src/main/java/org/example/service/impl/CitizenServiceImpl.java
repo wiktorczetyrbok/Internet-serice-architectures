@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,7 +27,7 @@ public class CitizenServiceImpl implements CitizenService {
 
     @Override
     public void addCitizen(CitizenDto citizenDto) {
-        City city = null;
+        City city;
         try {
             city = cityRepository.findByName(citizenDto.getCityName()).orElseThrow(SQLException::new);
         } catch (SQLException e) {
@@ -37,10 +38,6 @@ public class CitizenServiceImpl implements CitizenService {
 
     }
 
-    @Override
-    public void addCitizen(Citizen citizen) {
-        citizenRepository.save(citizen);
-    }
 
     @Override
     public List<CitizenDto> getAllCitizens() {
@@ -53,7 +50,20 @@ public class CitizenServiceImpl implements CitizenService {
     }
 
     @Override
-    public void deleteCitizen(Citizen selectedCitizen) {
-        citizenRepository.delete(selectedCitizen);
+    public boolean deleteCitizen(String name) {
+        try {
+            Citizen citizen = citizenRepository.findByName(name).orElseThrow();
+            citizenRepository.delete(citizen);
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+        return true;
     }
+
+    @Override
+    public CitizenDto getCitizenByName(String name) {
+        Citizen citizen = citizenRepository.findByName(name).orElseThrow();
+        return CitizenMapper.mapToCitizenDto(citizen);
+    }
+
 }

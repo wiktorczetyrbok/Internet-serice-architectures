@@ -1,14 +1,15 @@
 package org.example.service;
 
 import org.example.dto.CityDto;
-import org.example.model.City;
 
 import java.util.List;
 
 public interface CityService {
-    void addCity(City city);
+    void addCity(CityDto cityDto);
 
     List<CityDto> getAllCities();
 
-    City getCityByName(String cityName);
+    CityDto getCityByName(String cityName);
+
+    boolean deleteCity(String name);
 }
