@@ -2,7 +2,6 @@ package org.example.dto;
 
 import lombok.Builder;
 import lombok.Data;
-import org.example.model.Citizen;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +13,9 @@ public class CityDto {
     private UUID id;
     private String name;
     private double area;
-    private List<Citizen> citizens;
+    private List<UUID> citizensID;
 
-    public List<Citizen> getCitizens() {
-        return citizens == null ? new ArrayList<>() : citizens;
+    public List<UUID> getCitizens() {
+        return citizensID == null ? new ArrayList<>() : citizensID;
     }
 }
