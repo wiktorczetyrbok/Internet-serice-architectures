@@ -1,21 +1,47 @@
 package org.example.utils;
 
+import jakarta.annotation.PostConstruct;
 import org.example.model.Citizen;
 import org.example.model.City;
+import org.example.service.CitizenService;
+import org.example.service.CityService;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class DataLoader {
-    public static void loadCitizensToCities(List<Citizen> listOfCitizens,
-                                            List<City> listOfCities) {
+
+    private final CityService cityService;
+
+    private final CitizenService citizenService;
+
+    public DataLoader(CityService cityService, CitizenService citizenService) {
+        this.cityService = cityService;
+        this.citizenService = citizenService;
+    }
+
+    @PostConstruct
+    public void persistData() {
+        List<Citizen> listOfCitizens = DataLoader.loadCitizens();
+        List<City> listOfCities = DataLoader.loadCities();
+
+        loadCitizensToCities(listOfCitizens, listOfCities);
+
+        listOfCities.forEach(city -> cityService.addCity(city));
+        listOfCitizens.forEach(c -> citizenService.addCitizen(c));
+    }
+
+    private static void loadCitizensToCities(List<Citizen> listOfCitizens,
+                                             List<City> listOfCities) {
         for (int i = 0; i < listOfCitizens.size(); i++) {
             listOfCitizens.get(i).setCity(listOfCities.get(i % listOfCities.size()));
             listOfCities.get(i % listOfCities.size()).getCitizens().add(listOfCitizens.get(i));
         }
     }
 
-    public static List<Citizen> loadCitizens() {
+    private static List<Citizen> loadCitizens() {
         List<Citizen> listOfCitizens = new ArrayList<>();
         listOfCitizens.add(Citizen.builder().name("Jeff Eng").age(24).city(null).build());
         listOfCitizens.add(Citizen.builder().name("Senthil gopsalym").age(120).city(null).build());
@@ -28,7 +54,7 @@ public class DataLoader {
     }
 
 
-    public static List<City> loadCities() {
+    private static List<City> loadCities() {
         List<City> listOfCities = new ArrayList<>();
         listOfCities.add(City.builder().name("Gdansk").area(21312321).citizens(new ArrayList<>()).build());
         listOfCities.add(City.builder().name("Torun").area(15756657).citizens(new ArrayList<>()).build());
@@ -36,6 +62,4 @@ public class DataLoader {
         listOfCities.add(City.builder().name("Krakow").area(10123123).citizens(new ArrayList<>()).build());
         return listOfCities;
     }
-
-
 }
