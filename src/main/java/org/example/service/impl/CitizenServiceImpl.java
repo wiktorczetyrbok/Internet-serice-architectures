@@ -52,4 +52,8 @@ public class CitizenServiceImpl implements CitizenService {
         return collect;
     }
 
+    @Override
+    public void deleteCitizen(Citizen selectedCitizen) {
+        citizenRepository.delete(selectedCitizen);
+    }
 }
