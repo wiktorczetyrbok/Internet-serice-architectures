@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org</groupId>
-	<artifactId>Internet-sercice-architectures</artifactId>
+	<artifactId>CityService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Internet-sercice-architectures</name>
+	<name>CityService</name>
 	<description>project for internet-service-architectures</description>
 	<properties>
 		<java.version>17</java.version>
