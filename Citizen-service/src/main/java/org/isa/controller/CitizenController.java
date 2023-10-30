@@ -1,9 +1,8 @@
 package org.isa.controller;
 
-import org.example.dto.CitizenDto;
-import org.example.exception.CitizenNotFoundException;
-import org.example.exception.CityNotFoundException;
-import org.example.service.CitizenService;
+import org.isa.dto.CitizenDto;
+import org.isa.exception.CitizenNotFoundException;
+import org.isa.service.CitizenService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +43,9 @@ public class CitizenController {
         try {
             CitizenDto updatedCitizen = citizenService.updateCitizen(id, updatedCitizenDto);
             return new ResponseEntity<>(updatedCitizen, HttpStatus.OK);
-        } catch (CitizenNotFoundException | CityNotFoundException e) {
+        } catch (CitizenNotFoundException// | CityNotFoundException
+                e
+        ) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -64,8 +65,6 @@ public class CitizenController {
         List<CitizenDto> citizens = citizenService.getAllCitizens();
         return new ResponseEntity<>(citizens, HttpStatus.OK);
     }
-
-
 }
 
 

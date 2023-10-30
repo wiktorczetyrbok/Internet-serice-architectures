@@ -1,13 +1,10 @@
 package org.isa.service.impl;
 
-import org.example.dto.CitizenDto;
-import org.example.exception.CitizenNotFoundException;
-import org.example.exception.CityNotFoundException;
-import org.example.mapper.CitizenMapper;
-import org.example.model.Citizen;
-import org.example.model.City;
-import org.example.repository.CitizenRepository;
-import org.example.repository.CityRepository;
+import org.isa.dto.CitizenDto;
+import org.isa.exception.CitizenNotFoundException;
+import org.isa.mapper.CitizenMapper;
+import org.isa.model.Citizen;
+import org.isa.repository.CitizenRepository;
 import org.isa.service.CitizenService;
 import org.springframework.stereotype.Service;
 
@@ -17,19 +14,17 @@ import java.util.stream.Collectors;
 
 @Service
 public class CitizenServiceImpl implements CitizenService {
-    private final CityRepository cityRepository;
     private final CitizenRepository citizenRepository;
 
-    public CitizenServiceImpl(CityRepository cityRepository, CitizenRepository citizenRepository) {
-        this.cityRepository = cityRepository;
+    public CitizenServiceImpl(CitizenRepository citizenRepository) {
         this.citizenRepository = citizenRepository;
     }
 
     @Override
     public void addCitizen(CitizenDto citizenDto) {
-        City city = cityRepository.findById(citizenDto.getCityId())
-                .orElseThrow(() -> new CityNotFoundException("City not found: " + citizenDto.getCityId()));
-        Citizen citizen = CitizenMapper.mapToCitizen(citizenDto, city);
+//        City city = cityRepository.findById(citizenDto.getCityId())
+//                .orElseThrow(() -> new CityNotFoundException("City not found: " + citizenDto.getCityId()));
+        Citizen citizen = CitizenMapper.mapToCitizen(citizenDto);
         citizenRepository.save(citizen);
     }
 
@@ -64,10 +59,10 @@ public class CitizenServiceImpl implements CitizenService {
                 .orElseThrow(() -> new CitizenNotFoundException("Citizen not found: " + id));
         existingCitizen.setName(updatedCitizenDto.getName());
         existingCitizen.setAge(updatedCitizenDto.getAge());
-        City city = cityRepository
+      /*  City city = cityRepository
                 .findById(updatedCitizenDto.getCityId())
                 .orElseThrow(() -> new CityNotFoundException("City not found: " + id));
-        existingCitizen.setCity(city);
+        existingCitizen.setCity(city);*/
 
         citizenRepository.save(existingCitizen);
 

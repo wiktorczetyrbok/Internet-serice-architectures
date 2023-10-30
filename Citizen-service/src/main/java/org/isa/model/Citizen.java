@@ -21,16 +21,6 @@ public class Citizen implements Serializable {
     private UUID id;
     private String name;
     private int age;
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
-
-    @Override
-    public String toString() {
-        return "Citizen{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", city=" + city.getName() +
-                '}';
-    }
+    @Column(name = "city_id")
+    private UUID cityId;
 }

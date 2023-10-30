@@ -1,6 +1,6 @@
 package org.isa.service;
 
-import org.example.dto.CitizenDto;
+import org.isa.dto.CitizenDto;
 
 import java.util.List;
 import java.util.UUID;

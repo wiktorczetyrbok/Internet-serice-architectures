@@ -1,6 +1,7 @@
 package org.isa.repository;
 
-import org.example.model.Citizen;
+
+import org.isa.model.Citizen;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
