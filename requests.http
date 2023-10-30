@@ -1,0 +1,59 @@
+### GET city by name
+GET http://localhost:8080/city/Gizyko
+
+### GET city by name not exsisting
+GET http://localhost:8080/city/fsdjkbnf
+
+### Get list of all cities
+GET http://localhost:8080/city
+
+### Get citizens list
+GET http://localhost:8080/citizen
+
+### Get  single citizen by name
+GET http://localhost:8080/citizen/Wiktor%20Czetyrbok
+
+### Delete citizen  by  name
+DELETE http://localhost:8080/citizen/Wiktor%20Czetyrbok
+
+### DELETE CITY by name
+DELETE http://localhost:8080/city/Gizyko
+
+### Create new citizen
+POST http://localhost:8080/citizen
+
+Request Body:
+{
+    "name": "Kasztan",
+    "age": 25,
+    "cityName": "Gizyko"
+}
+### Update  city
+POST http://localhost:8080/city
+
+Request Body:
+{
+    "name": "NewCity",
+    "area": 100,
+    "citizensID": []
+}
+
+### Update a citizen by name (PUT method)
+PUT http://localhost:8080/citizen/Wiktor%20Czetyrbok
+
+Request Body:
+{
+    "name": "UpdatedName",
+    "age": 30,
+    "cityName": "UpdatedCity"
+}
+
+### Update a city by name (PUT method)
+PUT http://localhost:8080/city/Gizyko
+
+Request Body:
+{
+    "name": "UpdatedCityName",
+    "area": 150,
+    "citizensID": ["citizenId1", "citizenId2"]
+}
