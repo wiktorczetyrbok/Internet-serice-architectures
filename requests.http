@@ -13,12 +13,6 @@ GET http://localhost:8080/citizen
 ### Get  single citizen by name
 GET http://localhost:8080/citizen/Wiktor%20Czetyrbok
 
-### Delete citizen  by  name
-DELETE http://localhost:8080/citizen/Wiktor%20Czetyrbok
-
-### DELETE CITY by name
-DELETE http://localhost:8080/city/Gizyko
-
 ### Create new citizen
 POST http://localhost:8080/citizen
 
@@ -57,3 +51,9 @@ Request Body:
     "area": 150,
     "citizensID": ["citizenId1", "citizenId2"]
 }
+
+### Delete citizen  by  name
+DELETE http://localhost:8080/citizen/Wiktor%20Czetyrbok
+
+### DELETE CITY by name
+DELETE http://localhost:8080/city/Gizyko
