@@ -3,6 +3,7 @@ package org.example.service;
 import org.example.dto.CityDto;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface CityService {
     void addCity(CityDto cityDto);
@@ -11,7 +12,7 @@ public interface CityService {
 
     CityDto getCityByName(String cityName);
 
-    boolean deleteCity(String name);
+    boolean deleteCity(UUID id);
 
-    CityDto updateCity(String name, CityDto updatedCityDto);
+    CityDto updateCity(UUID id, CityDto updatedCityDto);
 }

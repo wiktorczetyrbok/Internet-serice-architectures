@@ -2,6 +2,7 @@ package org.example.controller;
 
 import org.example.dto.CitizenDto;
 import org.example.exception.CitizenNotFoundException;
+import org.example.exception.CityNotFoundException;
 import org.example.service.CitizenService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,21 +37,21 @@ public class CitizenController {
         }
     }
 
-    @PutMapping("/{name}")
+    @PutMapping("/{id}")
     public ResponseEntity<CitizenDto> updateCitizen(
-            @PathVariable String name,
+            @PathVariable UUID id,
             @RequestBody CitizenDto updatedCitizenDto) {
         try {
-            CitizenDto updatedCitizen = citizenService.updateCitizen(name, updatedCitizenDto);
+            CitizenDto updatedCitizen = citizenService.updateCitizen(id, updatedCitizenDto);
             return new ResponseEntity<>(updatedCitizen, HttpStatus.OK);
-        } catch (CitizenNotFoundException e) {
+        } catch (CitizenNotFoundException | CityNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @DeleteMapping("/{name}")
-    public ResponseEntity<Void> deleteCitizen(@PathVariable String name) {
-        boolean deleted = citizenService.deleteCitizen(name);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCitizen(@PathVariable UUID id) {
+        boolean deleted = citizenService.deleteCitizen(id);
         if (deleted) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {

@@ -12,5 +12,5 @@ public class CitizenDto implements Serializable {
     private UUID id;
     private String name;
     private int age;
-    private String cityName;
+    private UUID cityId;
 }

@@ -50,8 +50,8 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public boolean deleteCity(String name) {
-        City city = cityRepository.findByName(name).orElse(null);
+    public boolean deleteCity(UUID id) {
+        City city = cityRepository.findById(id).orElse(null);
         if (city == null) {
             return false;
         }
@@ -60,9 +60,9 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public CityDto updateCity(String name, CityDto updatedCityDto) {
-        City city = cityRepository.findByName(name)
-                .orElseThrow(() -> new CityNotFoundException("City not found: " + name));
+    public CityDto updateCity(UUID id, CityDto updatedCityDto) {
+        City city = cityRepository.findById(id)
+                .orElseThrow(() -> new CityNotFoundException("City not found: " + id));
 
         city.setName(updatedCityDto.getName());
         city.setArea(updatedCityDto.getArea());

@@ -1,0 +1,512 @@
+DELETE http://localhost:8080/city/95ed4c6d-1086-4bfb-ae21-5bbf218d4407
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+DELETE http://localhost:8080/citizen/4d383d39-1a98-426e-83ab-9c89bad0e181
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8080/city/Gizyko
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T091134.200.json
+
+###
+
+GET http://localhost:8080/city/fsdjkbnf
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8080/city/Gizyko
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T090640.200.json
+
+###
+
+PUT http://localhost:8080/city/6a815ee4-ef98-4ee5-8a12-0efe78ead43f
+Content-Length: 86
+Content-Type: */*; charset=UTF-8
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+Request Body:
+{
+    "name": "UpdatedCityName",
+    "area": 150,
+    "citizensID": []
+}
+
+<> 2023-10-30T090250.415.json
+
+###
+
+PUT http://localhost:8080/city/8d5d1812-2626-47cc-9d66-ff4b6e667fde
+Content-Length: 112
+Content-Type: */*; charset=UTF-8
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+Request Body:
+{
+    "name": "UpdatedCityName",
+    "area": 150,
+    "citizensID": ["citizenId1", "citizenId2"]
+}
+
+<> 2023-10-30T090236.415.json
+
+###
+
+DELETE http://localhost:8080/city/d6a9b7a9-ee67-4e97-82ba-1e1c118c6827
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+DELETE http://localhost:8080/citizen/4d4ab20a-3558-4aad-a818-9aa4fb5ff234
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+DELETE http://localhost:8080/city/Gizyko
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T090012.400.json
+
+###
+
+DELETE http://localhost:8080/citizen/Wiktor%20Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T090008.400.json
+
+###
+
+GET http://localhost:8080/citizen/Wiktor%20Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T090002.200.json
+
+###
+
+GET http://localhost:8080/citizen
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T085959.200.json
+
+###
+
+GET http://localhost:8080/city
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T085949.200.json
+
+###
+
+GET http://localhost:8080/city/fsdjkbnf
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8080/city/Gizyko
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T085858.200.json
+
+###
+
+GET http://localhost:8080/city
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T084300.200.json
+
+###
+
+GET http://localhost:8080/citizen/Wiktor%20Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8080/citizen/Wiktor%20Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+DELETE http://localhost:8080/city/Gizyko
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8080/citizen/Wiktor%20Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+PUT http://localhost:8080/citizen/Wiktor%20Czetyrbok
+Content-Length: 89
+Content-Type: */*; charset=UTF-8
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+Request Body:
+{
+    "name": "UpdatedName",
+    "age": 30,
+    "cityName": "UpdatedCity"
+}
+
+<> 2023-10-30T083835.415.json
+
+###
+
+POST http://localhost:8080/city
+Content-Length: 78
+Content-Type: */*; charset=UTF-8
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+Request Body:
+{
+    "name": "NewCity",
+    "area": 100,
+    "citizensID": []
+}
+
+<> 2023-10-30T083819.415.json
+
+###
+
+POST http://localhost:8080/citizen
+Content-Length: 80
+Content-Type: */*; charset=UTF-8
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+Request Body:
+{
+    "name": "Kasztan",
+    "age": 25,
+    "cityName": "Gizyko"
+}
+
+<> 2023-10-30T083812.415.json
+
+###
+
+GET http://localhost:8080/citizen
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T083802.200.json
+
+###
+
+POST http://localhost:8080/city
+Content-Length: 78
+Content-Type: */*; charset=UTF-8
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+Request Body:
+{
+    "name": "NewCity",
+    "area": 100,
+    "citizensID": []
+}
+
+<> 2023-10-30T083737.415.json
+
+###
+
+POST http://localhost:8080/citizen
+Content-Length: 80
+Content-Type: */*; charset=UTF-8
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+Request Body:
+{
+    "name": "Kasztan",
+    "age": 25,
+    "cityName": "Gizyko"
+}
+
+<> 2023-10-30T083713.415.json
+
+###
+
+POST http://localhost:8080/citizen
+Content-Length: 80
+Content-Type: */*; charset=UTF-8
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+Request Body:
+{
+    "name": "Kasztan",
+    "age": 25,
+    "cityName": "Gizyko"
+}
+
+<> 2023-10-30T083712.415.json
+
+###
+
+POST http://localhost:8080/citizen
+Content-Length: 80
+Content-Type: */*; charset=UTF-8
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+Request Body:
+{
+    "name": "Kasztan",
+    "age": 25,
+    "cityName": "Gizyko"
+}
+
+<> 2023-10-30T083647.415.json
+
+###
+
+DELETE http://localhost:8080/city/Gizyko
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+DELETE http://localhost:8080/citizen/Wiktor%20Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8080/citizen/Wiktor%20Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T083638.200.json
+
+###
+
+GET http://localhost:8080/citizen/Wiktor%20Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T083635.200.json
+
+###
+
+GET http://localhost:8080/citizen
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T083633.200.json
+
+###
+
+GET http://localhost:8080/city
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T083629.200.json
+
+###
+
+GET http://localhost:8080/city/fsdjkbnf
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+GET http://localhost:8080/city/Gizyko
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T083623.200.json
+
+###
+
+DELETE http://localhost:8080/citizen/Wiktor%20Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+POST http://localhost:8080/citizen
+Content-Length: 80
+Content-Type: */*; charset=UTF-8
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+Request Body:
+{
+    "name": "Kasztan",
+    "age": 25,
+    "cityName": "Gizyko"
+}
+
+<> 2023-10-30T082919.415.json
+
+###
+
+GET http://localhost:8080/citizen
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T081347.200.json
+
+###
+
+GET http://localhost:8080/citizen
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T080911.200.json
+
+###
+
+GET http://localhost:8080/citizens
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T080908.404.json
+
+###
+
+GET http://localhost:8080/citizen/Wiktor%20Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T080905.200.json
+
+###
+
+GET http://localhost:8080/citizens/Wiktor%20Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T080859.404.json
+
+###
+
+GET http://localhost:8080/citizens/Wiktor%20Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T080857.404.json
+
+###
+
+GET http://localhost:8080/citizens/Wiktor+Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T080808.404.json
+
+###
+
+GET http://localhost:8080/citizens/text=Wiktor+Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T080803.404.json
+
+###
+
+GET http://localhost:8080/text=Wiktor+Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T080739.404.json
+
+###
+
+GET http://localhost:8080/text=Wiktor+Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T080737.404.json
+
+###
+
+GET http://localhost:8080/Wiktor+Czetyrbok
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-10-30T080731.404.json
+
+###
+

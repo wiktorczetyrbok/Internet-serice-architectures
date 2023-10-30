@@ -3,6 +3,7 @@ package org.example.service;
 import org.example.dto.CitizenDto;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface CitizenService {
     void addCitizen(CitizenDto citizenDto);
@@ -10,9 +11,9 @@ public interface CitizenService {
 
     List<CitizenDto> getAllCitizens();
 
-    boolean deleteCitizen(String name);
+    boolean deleteCitizen(UUID id);
 
     CitizenDto getCitizenByName(String name);
 
-    CitizenDto updateCitizen(String name, CitizenDto updatedCitizenDto);
+    CitizenDto updateCitizen(UUID id, CitizenDto updatedCitizenDto);
 }

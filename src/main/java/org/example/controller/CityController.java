@@ -26,13 +26,13 @@ public class CityController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping("/{name}")
+    @PutMapping("/{id}")
     public ResponseEntity<CityDto> updateCity(
-            @PathVariable String name,
+            @PathVariable UUID id,
             @RequestBody CityDto updatedCityDto
     ) {
         try {
-            CityDto updatedCity = cityService.updateCity(name, updatedCityDto);
+            CityDto updatedCity = cityService.updateCity(id, updatedCityDto);
             return new ResponseEntity<>(updatedCity, HttpStatus.OK);
         } catch (CityNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -55,9 +55,9 @@ public class CityController {
         }
     }
 
-    @DeleteMapping("/{name}")
-    public ResponseEntity<Void> deleteCity(@PathVariable String name) {
-        boolean deleted = cityService.deleteCity(name);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCity(@PathVariable UUID id) {
+        boolean deleted = cityService.deleteCity(id);
         if (deleted) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
