@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/citizen")
@@ -20,6 +21,7 @@ public class CitizenController {
 
     @PostMapping
     public ResponseEntity<Void> addNewCitizen(@RequestBody CitizenDto citizenDto) {
+        citizenDto.setId(UUID.randomUUID());
         citizenService.addCitizen(citizenDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -29,6 +31,18 @@ public class CitizenController {
         try {
             CitizenDto citizen = citizenService.getCitizenByName(name);
             return new ResponseEntity<>(citizen, HttpStatus.OK);
+        } catch (CitizenNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("/{name}")
+    public ResponseEntity<CitizenDto> updateCitizen(
+            @PathVariable String name,
+            @RequestBody CitizenDto updatedCitizenDto) {
+        try {
+            CitizenDto updatedCitizen = citizenService.updateCitizen(name, updatedCitizenDto);
+            return new ResponseEntity<>(updatedCitizen, HttpStatus.OK);
         } catch (CitizenNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -49,6 +63,8 @@ public class CitizenController {
         List<CitizenDto> citizens = citizenService.getAllCitizens();
         return new ResponseEntity<>(citizens, HttpStatus.OK);
     }
+
+
 }
 
 

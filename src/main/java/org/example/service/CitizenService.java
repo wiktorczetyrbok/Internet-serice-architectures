@@ -13,4 +13,6 @@ public interface CitizenService {
     boolean deleteCitizen(String name);
 
     CitizenDto getCitizenByName(String name);
+
+    CitizenDto updateCitizen(String name, CitizenDto updatedCitizenDto);
 }

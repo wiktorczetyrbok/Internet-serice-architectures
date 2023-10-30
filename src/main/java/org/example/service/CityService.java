@@ -12,4 +12,6 @@ public interface CityService {
     CityDto getCityByName(String cityName);
 
     boolean deleteCity(String name);
+
+    CityDto updateCity(String name, CityDto updatedCityDto);
 }

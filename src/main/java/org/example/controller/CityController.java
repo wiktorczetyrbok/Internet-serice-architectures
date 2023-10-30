@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/city")
@@ -20,8 +21,22 @@ public class CityController {
 
     @PostMapping
     public ResponseEntity<Void> addNewCity(@RequestBody CityDto cityDto) {
+        cityDto.setId(UUID.randomUUID());
         cityService.addCity(cityDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{name}")
+    public ResponseEntity<CityDto> updateCity(
+            @PathVariable String name,
+            @RequestBody CityDto updatedCityDto
+    ) {
+        try {
+            CityDto updatedCity = cityService.updateCity(name, updatedCityDto);
+            return new ResponseEntity<>(updatedCity, HttpStatus.OK);
+        } catch (CityNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping

@@ -11,9 +11,7 @@ import org.example.repository.CityRepository;
 import org.example.service.CitizenService;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLException;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,6 +55,18 @@ public class CitizenServiceImpl implements CitizenService {
         Citizen citizen = citizenRepository.findByName(name)
                 .orElseThrow(() -> new CitizenNotFoundException("Citizen not found: " + name));
         return CitizenMapper.mapToCitizenDto(citizen);
+    }
+
+    @Override
+    public CitizenDto updateCitizen(String name, CitizenDto updatedCitizenDto) {
+        Citizen existingCitizen = citizenRepository.findByName(name)
+                .orElseThrow(() -> new CitizenNotFoundException("Citizen not found: " + name));
+
+        existingCitizen.setAge(updatedCitizenDto.getAge());
+
+        citizenRepository.save(existingCitizen);
+
+        return CitizenMapper.mapToCitizenDto(existingCitizen);
     }
 }
 

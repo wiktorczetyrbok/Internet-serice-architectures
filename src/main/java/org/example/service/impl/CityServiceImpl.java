@@ -11,7 +11,6 @@ import org.example.service.CityService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -58,6 +57,18 @@ public class CityServiceImpl implements CityService {
         }
         cityRepository.delete(city);
         return true;
+    }
+
+    @Override
+    public CityDto updateCity(String name, CityDto updatedCityDto) {
+        City city = cityRepository.findByName(name)
+                .orElseThrow(() -> new CityNotFoundException("City not found: " + name));
+
+        city.setName(updatedCityDto.getName());
+        city.setArea(updatedCityDto.getArea());
+        cityRepository.save(city);
+
+        return CityMapper.mapToCityDto(city);
     }
 
     private List<Citizen> findCitizensById(List<UUID> uuids) {
