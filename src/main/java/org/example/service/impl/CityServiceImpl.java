@@ -1,6 +1,7 @@
 package org.example.service.impl;
 
 import org.example.dto.CityDto;
+import org.example.exception.CityNotFoundException;
 import org.example.mapper.CityMapper;
 import org.example.model.Citizen;
 import org.example.model.City;
@@ -32,30 +33,30 @@ public class CityServiceImpl implements CityService {
         cityRepository.save(city);
     }
 
-
     @Override
     public List<CityDto> getAllCities() {
-        System.out.println(cityRepository.findAll());
-        return cityRepository
-                .findAll()
-                .stream()
+        List<City> cities = cityRepository.findAll();
+        return cities.stream()
                 .map(CityMapper::mapToCityDto)
                 .collect(Collectors.toList());
     }
 
     @Override
     public CityDto getCityByName(String cityName) {
-        return CityMapper.mapToCityDto(cityRepository.getCityByName(cityName));
+        City city = cityRepository.getCityByName(cityName);
+        if (city == null) {
+            throw new CityNotFoundException("City not found: " + cityName);
+        }
+        return CityMapper.mapToCityDto(city);
     }
 
     @Override
     public boolean deleteCity(String name) {
-        try {
-            City city = cityRepository.findByName(name).orElseThrow();
-            cityRepository.delete(city);
-        } catch (NoSuchElementException e) {
+        City city = cityRepository.findByName(name).orElse(null);
+        if (city == null) {
             return false;
         }
+        cityRepository.delete(city);
         return true;
     }
 

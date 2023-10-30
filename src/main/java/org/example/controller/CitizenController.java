@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.dto.CitizenDto;
+import org.example.exception.CitizenNotFoundException;
 import org.example.service.CitizenService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,10 +26,10 @@ public class CitizenController {
 
     @GetMapping("/{name}")
     public ResponseEntity<CitizenDto> getCitizenByName(@PathVariable String name) {
-        CitizenDto citizen = citizenService.getCitizenByName(name);
-        if (citizen != null) {
+        try {
+            CitizenDto citizen = citizenService.getCitizenByName(name);
             return new ResponseEntity<>(citizen, HttpStatus.OK);
-        } else {
+        } catch (CitizenNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -41,7 +42,6 @@ public class CitizenController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
     }
 
     @GetMapping
@@ -50,3 +50,5 @@ public class CitizenController {
         return new ResponseEntity<>(citizens, HttpStatus.OK);
     }
 }
+
+

@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.dto.CityDto;
+import org.example.exception.CityNotFoundException;
 import org.example.service.CityService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,10 +32,10 @@ public class CityController {
 
     @GetMapping("/{name}")
     public ResponseEntity<CityDto> getCity(@PathVariable String name) {
-        CityDto city = cityService.getCityByName(name);
-        if (city != null) {
+        try {
+            CityDto city = cityService.getCityByName(name);
             return new ResponseEntity<>(city, HttpStatus.OK);
-        } else {
+        } catch (CityNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
