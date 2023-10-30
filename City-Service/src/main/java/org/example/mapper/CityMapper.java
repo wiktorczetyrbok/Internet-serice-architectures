@@ -1,19 +1,16 @@
 package org.example.mapper;
 
 import org.example.dto.CityDto;
-import org.example.model.Citizen;
 import org.example.model.City;
-
-import java.util.List;
 
 public class CityMapper {
 
-    public static City mapToCity(CityDto cityDto, List<Citizen> citizenList) {
+    public static City mapToCity(CityDto cityDto) {
         return City.builder()
                 .id(cityDto.getId())
                 .area(cityDto.getArea())
                 .name(cityDto.getName())
-                .citizens(citizenList)
+                .citizensIds(cityDto.getCitizensIds())
                 .build();
     }
 
@@ -22,7 +19,7 @@ public class CityMapper {
                 .id(city.getId())
                 .area(city.getArea())
                 .name(city.getName())
-                .citizensID(city.getCitizens().stream().map(c -> c.getId()).toList())
+                .citizensIds(city.getCitizensIds())
                 .build();
     }
 }
