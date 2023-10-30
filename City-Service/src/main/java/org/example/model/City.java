@@ -9,13 +9,12 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Data
 @Builder
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 @Table(name = "cities")
 public class City implements Serializable {
     @Id
@@ -23,18 +22,7 @@ public class City implements Serializable {
     private UUID id;
     private String name;
     private double area;
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Citizen> citizens;
-
-
-    @Override
-    public String toString() {
-        List<String> citizensNames = citizens.stream().map(c -> c.getName()).collect(Collectors.toList());
-        return "City{" +
-                "id=" + id +
-                "name='" + name + '\'' +
-                ", area=" + area +
-                ", citizens=" + citizensNames +
-                '}';
-    }
+    @ElementCollection
+    @Column(name = "citizens_ids")
+    private List<UUID> citizensIds;
 }

@@ -3,9 +3,7 @@ package org.example.service.impl;
 import org.example.dto.CityDto;
 import org.example.exception.CityNotFoundException;
 import org.example.mapper.CityMapper;
-import org.example.model.Citizen;
 import org.example.model.City;
-import org.example.repository.CitizenRepository;
 import org.example.repository.CityRepository;
 import org.example.service.CityService;
 import org.springframework.stereotype.Service;
@@ -18,17 +16,14 @@ import java.util.stream.Collectors;
 public class CityServiceImpl implements CityService {
 
     private final CityRepository cityRepository;
-    private final CitizenRepository citizenRepository;
 
-
-    public CityServiceImpl(CityRepository cityRepository, CitizenRepository citizenRepository) {
+    public CityServiceImpl(CityRepository cityRepository) {
         this.cityRepository = cityRepository;
-        this.citizenRepository = citizenRepository;
     }
 
     @Override
     public void addCity(CityDto cityDto) {
-        City city = CityMapper.mapToCity(cityDto, findCitizensById(cityDto.getCitizensID()));
+        City city = CityMapper.mapToCity(cityDto);
         cityRepository.save(city);
     }
 
@@ -69,13 +64,6 @@ public class CityServiceImpl implements CityService {
         cityRepository.save(city);
 
         return CityMapper.mapToCityDto(city);
-    }
-
-    private List<Citizen> findCitizensById(List<UUID> uuids) {
-        return uuids.stream().map(c -> citizenRepository
-                        .findById(c)
-                        .orElseThrow())
-                .toList();
     }
 
 }
