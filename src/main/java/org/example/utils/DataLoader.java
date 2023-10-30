@@ -3,8 +3,8 @@ package org.example.utils;
 import jakarta.annotation.PostConstruct;
 import org.example.model.Citizen;
 import org.example.model.City;
-import org.example.service.CitizenService;
-import org.example.service.CityService;
+import org.example.repository.CitizenRepository;
+import org.example.repository.CityRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -13,13 +13,13 @@ import java.util.List;
 @Component
 public class DataLoader {
 
-    private final CityService cityService;
+    private final CityRepository cityRepository;
 
-    private final CitizenService citizenService;
+    private final CitizenRepository citizenRepository;
 
-    public DataLoader(CityService cityService, CitizenService citizenService) {
-        this.cityService = cityService;
-        this.citizenService = citizenService;
+    public DataLoader(CityRepository cityRepository, CitizenRepository citizenRepository) {
+        this.cityRepository = cityRepository;
+        this.citizenRepository = citizenRepository;
     }
 
     @PostConstruct
@@ -29,8 +29,8 @@ public class DataLoader {
 
         loadCitizensToCities(listOfCitizens, listOfCities);
 
-        listOfCities.forEach(city -> cityService.addCity(city));
-        listOfCitizens.forEach(c -> citizenService.addCitizen(c));
+        cityRepository.saveAll(listOfCities);
+        citizenRepository.saveAll(listOfCitizens);
     }
 
     private static void loadCitizensToCities(List<Citizen> listOfCitizens,

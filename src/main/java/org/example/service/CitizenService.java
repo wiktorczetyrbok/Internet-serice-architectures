@@ -1,16 +1,19 @@
 package org.example.service;
 
 import org.example.dto.CitizenDto;
-import org.example.model.Citizen;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface CitizenService {
     void addCitizen(CitizenDto citizenDto);
 
-    void addCitizen(Citizen citizen);
 
     List<CitizenDto> getAllCitizens();
 
-    void deleteCitizen(Citizen selectedCitizen);
+    boolean deleteCitizen(UUID id);
+
+    CitizenDto getCitizenByName(String name);
+
+    CitizenDto updateCitizen(UUID id, CitizenDto updatedCitizenDto);
 }

@@ -8,7 +8,7 @@ public class CitizenMapper {
     public static CitizenDto mapToCitizenDto(Citizen citizen) {
 
         return CitizenDto.builder()
-                .cityName(citizen.getCity().getName())
+                .cityId(citizen.getCity().getId())
                 .id(citizen.getId())
                 .name(citizen.getName())
                 .age(citizen.getAge())

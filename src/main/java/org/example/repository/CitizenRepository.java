@@ -17,4 +17,6 @@ public interface CitizenRepository extends JpaRepository<Citizen, UUID> {
     Optional<Citizen> findCitizenByNameAndAge(
             @Param("name") String name,
             @Param("age") int age);
+
+    Optional<Citizen> findByName(String name);
 }
