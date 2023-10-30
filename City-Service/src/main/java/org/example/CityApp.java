@@ -1,12 +1,13 @@
 package org.example;
 
+import org.example.service.CityService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CityService {
+public class CityApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(CityService.class, args);
+        SpringApplication.run(CityApp.class, args);
     }
 }
