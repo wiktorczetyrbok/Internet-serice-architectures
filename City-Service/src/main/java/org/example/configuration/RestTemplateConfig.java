@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 public class RestTemplateConfig {
 
     @Bean
-    public RestTemplate restTemplate(@Value("${isa.citizen.url}") String baseUrl) {
+    public RestTemplate restTemplate(@Value("${isa.city.url}") String baseUrl) {
         return new RestTemplateBuilder().rootUri(baseUrl).build();
     }
 }
