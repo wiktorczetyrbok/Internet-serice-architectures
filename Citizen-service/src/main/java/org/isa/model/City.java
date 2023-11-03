@@ -7,22 +7,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
 @Builder
-@Entity
-@Table(name = "citizens")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Citizen implements Serializable {
+@Entity
+@Table(name = "cities")
+public class City implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
-    private int age;
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Citizen> citizens;
 
 }
