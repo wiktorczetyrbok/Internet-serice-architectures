@@ -10,7 +10,6 @@ public class CityMapper {
                 .id(cityDto.getId())
                 .area(cityDto.getArea())
                 .name(cityDto.getName())
-                .citizensIds(cityDto.getCitizensIds())
                 .build();
     }
 
@@ -19,7 +18,6 @@ public class CityMapper {
                 .id(city.getId())
                 .area(city.getArea())
                 .name(city.getName())
-                .citizensIds(city.getCitizensIds())
                 .build();
     }
 }

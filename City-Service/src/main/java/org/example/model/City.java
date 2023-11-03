@@ -22,7 +22,4 @@ public class City implements Serializable {
     private UUID id;
     private String name;
     private double area;
-    @ElementCollection
-    @Column(name = "citizens_ids")
-    private List<UUID> citizensIds;
 }

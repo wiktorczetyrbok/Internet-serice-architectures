@@ -37,20 +37,16 @@ public class DataLoader {
         );
         List<City> listOfCities = new ArrayList<>();
         listOfCities.add(City.builder().id(UUID.fromString("e340ba5d-de57-47db-a56f-5bd788f4d183"))
-                .name("Gdansk").area(21312321)
-                .citizensIds(Arrays.asList(uuids.get(0), uuids.get(1))).build());
+                .name("Gdansk").area(21312321).build());
 
         listOfCities.add(City.builder().id(UUID.fromString("3851dc62-52b7-481a-adcd-0287c16298b5"))
-                .name("Torun").area(15756657)
-                .citizensIds(Arrays.asList(uuids.get(2), uuids.get(3))).build());
+                .name("Torun").area(15756657).build());
 
         listOfCities.add(City.builder().id(UUID.fromString("fd08d341-a0b4-4a32-8251-903178a6daa4"))
-                .name("Gizyko").area(30232133)
-                .citizensIds(Arrays.asList(uuids.get(4), uuids.get(5))).build());
+                .name("Gizyko").area(30232133).build());
 
         listOfCities.add(City.builder().id(UUID.fromString("df6dfefa-107d-4791-84be-f548b1a9a902"))
-                .name("Krakow").area(10123123)
-                .citizensIds(Collections.singletonList(uuids.get(6))).build());
+                .name("Krakow").area(10123123).build());
 
         return listOfCities;
     }
