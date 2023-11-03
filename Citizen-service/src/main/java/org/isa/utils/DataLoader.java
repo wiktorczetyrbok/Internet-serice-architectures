@@ -2,32 +2,44 @@ package org.isa.utils;
 
 import jakarta.annotation.PostConstruct;
 import org.isa.model.Citizen;
+import org.isa.model.City;
 import org.isa.repository.CitizenRepository;
+import org.isa.repository.CityRepository;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Component
 public class DataLoader {
 
 
     private final CitizenRepository citizenRepository;
+    private final CityRepository cityRepository;
 
-    public DataLoader(CitizenRepository citizenRepository) {
+    public DataLoader(CitizenRepository citizenRepository, CityRepository cityRepository) {
         this.citizenRepository = citizenRepository;
+        this.cityRepository = cityRepository;
     }
 
     @PostConstruct
     public void persistData() {
-        List<Citizen> listOfCitizens = DataLoader.loadCitizens();
+        List<City> cities = loadCities();
+        List<Citizen> listOfCitizens = DataLoader.loadCitizens(cities);
+        loadCitizensToCity(cities, listOfCitizens);
         citizenRepository.saveAll(listOfCitizens);
+        cityRepository.saveAll(cities);
+    }
+
+    private void loadCitizensToCity(List<City> cities, List<Citizen> listOfCitizens) {
+        cities.get(0).setCitizens(Arrays.asList(listOfCitizens.get(0), listOfCitizens.get(1)));
+        cities.get(0).setCitizens(Arrays.asList(listOfCitizens.get(2), listOfCitizens.get(3)));
+        cities.get(0).setCitizens(Arrays.asList(listOfCitizens.get(4), listOfCitizens.get(5)));
+        cities.get(0).setCitizens(Collections.singletonList(listOfCitizens.get(6)));
+
     }
 
 
-    private static List<Citizen> loadCitizens() {
+    private static List<Citizen> loadCitizens(List<City> cities) {
         List<Citizen> listOfCitizens = new ArrayList<>();
         List<UUID> uuids = Arrays.asList(
                 UUID.fromString("aa2b6af2-3c14-4784-b524-110798769d72"),
@@ -41,26 +53,43 @@ public class DataLoader {
         );
         listOfCitizens.add(Citizen.builder().id(uuids.get(0))
                 .name("Jeff Eng").age(24)
-                .cityId(UUID.fromString("e340ba5d-de57-47db-a56f-5bd788f4d183")).build());
+                .city(cities.get(0)).build());
         listOfCitizens.add(Citizen.builder().id(uuids.get(1))
                 .name("Senthil gopsalym").age(120)
-                .cityId(UUID.fromString("e340ba5d-de57-47db-a56f-5bd788f4d183")).build());
+                .city(cities.get(0)).build());
         listOfCitizens.add(Citizen.builder().id(uuids.get(2))
                 .name("Wiktor Czetyrbok").age(30)
-                .cityId(UUID.fromString("3851dc62-52b7-481a-adcd-0287c16298b5")).build());
+                .city(cities.get(1)).build());
         listOfCitizens.add(Citizen.builder().id(uuids.get(3))
                 .name("Ewa Mila").age(96)
-                .cityId(UUID.fromString("3851dc62-52b7-481a-adcd-0287c16298b5")).build());
+                .city(cities.get(1)).build());
         listOfCitizens.add(Citizen.builder().id(uuids.get(4))
                 .name("Andrzej Wozny").age(101)
-                .cityId(UUID.fromString("fd08d341-a0b4-4a32-8251-903178a6daa4")).build());
+                .city(cities.get(2)).build());
         listOfCitizens.add(Citizen.builder().id(uuids.get(5))
                 .name("Micheal Jordan").age(78)
-                .cityId(UUID.fromString("fd08d341-a0b4-4a32-8251-903178a6daa4")).build());
+                .city(cities.get(2)).build());
         listOfCitizens.add(Citizen.builder().id(uuids.get(6))
                 .name("Andrew Tata ").age(23)
-                .cityId(UUID.fromString("df6dfefa-107d-4791-84be-f548b1a9a902")).build());
+                .city(cities.get(3)).build());
         return listOfCitizens;
+    }
+
+    private static List<City> loadCities() {
+        List<City> listOfCities = new ArrayList<>();
+        listOfCities.add(City.builder().id(UUID.fromString("e340ba5d-de57-47db-a56f-5bd788f4d183"))
+                .name("Gdansk").build());
+
+        listOfCities.add(City.builder().id(UUID.fromString("3851dc62-52b7-481a-adcd-0287c16298b5"))
+                .name("Torun").build());
+
+        listOfCities.add(City.builder().id(UUID.fromString("fd08d341-a0b4-4a32-8251-903178a6daa4"))
+                .name("Gizyko").build());
+
+        listOfCities.add(City.builder().id(UUID.fromString("df6dfefa-107d-4791-84be-f548b1a9a902"))
+                .name("Krakow").build());
+
+        return listOfCities;
     }
 
 }
