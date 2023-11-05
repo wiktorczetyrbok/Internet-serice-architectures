@@ -1,6 +1,7 @@
 package org.isa.utils;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.transaction.Transactional;
 import org.isa.model.Citizen;
 import org.isa.model.City;
 import org.isa.repository.CitizenRepository;
@@ -24,13 +25,14 @@ public class DataLoader {
     @PostConstruct
     public void persistData() {
         List<City> cities = loadCities();
-        List<Citizen> listOfCitizens = DataLoader.loadCitizens(cities);
+        cityRepository.saveAll(cities);
+        List<Citizen> listOfCitizens = loadCitizens(cities);
         loadCitizensToCity(cities, listOfCitizens);
         citizenRepository.saveAll(listOfCitizens);
         cityRepository.saveAll(cities);
-    }
 
-    private void loadCitizensToCity(List<City> cities, List<Citizen> listOfCitizens) {
+    }
+    public void loadCitizensToCity(List<City> cities, List<Citizen> listOfCitizens) {
         cities.get(0).setCitizens(Arrays.asList(listOfCitizens.get(0), listOfCitizens.get(1)));
         cities.get(0).setCitizens(Arrays.asList(listOfCitizens.get(2), listOfCitizens.get(3)));
         cities.get(0).setCitizens(Arrays.asList(listOfCitizens.get(4), listOfCitizens.get(5)));
@@ -39,7 +41,7 @@ public class DataLoader {
     }
 
 
-    private static List<Citizen> loadCitizens(List<City> cities) {
+    public List<Citizen> loadCitizens(List<City> cities) {
         List<Citizen> listOfCitizens = new ArrayList<>();
         List<UUID> uuids = Arrays.asList(
                 UUID.fromString("aa2b6af2-3c14-4784-b524-110798769d72"),
@@ -74,8 +76,7 @@ public class DataLoader {
                 .city(cities.get(3)).build());
         return listOfCitizens;
     }
-
-    private static List<City> loadCities() {
+    public List<City> loadCities() {
         List<City> listOfCities = new ArrayList<>();
         listOfCities.add(City.builder().id(UUID.fromString("e340ba5d-de57-47db-a56f-5bd788f4d183"))
                 .name("Gdansk").build());

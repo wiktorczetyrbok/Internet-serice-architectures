@@ -5,7 +5,6 @@ import org.example.exception.CityNotFoundException;
 import org.example.mapper.CityMapper;
 import org.example.model.City;
 import org.example.repository.CityRepository;
-import org.example.repository.CityRestRepository;
 import org.example.service.CityService;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +16,9 @@ import java.util.stream.Collectors;
 public class CityServiceImpl implements CityService {
 
     private final CityRepository cityRepository;
-    private final CityRestRepository cityRestRepository;
 
-    public CityServiceImpl(CityRepository cityRepository, CityRestRepository cityRestRepository) {
+    public CityServiceImpl(CityRepository cityRepository) {
         this.cityRepository = cityRepository;
-        this.cityRestRepository = cityRestRepository;
     }
 
     @Override
@@ -53,7 +50,6 @@ public class CityServiceImpl implements CityService {
         if (city == null) {
             return false;
         }
-        cityRestRepository.delete(city.getId());
         cityRepository.delete(city);
         return true;
     }
