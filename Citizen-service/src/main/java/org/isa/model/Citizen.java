@@ -17,7 +17,6 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Citizen implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
     private int age;

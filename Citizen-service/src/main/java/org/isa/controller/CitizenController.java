@@ -54,7 +54,7 @@ public class CitizenController {
     public ResponseEntity<Void> deleteCitizen(@PathVariable UUID id) {
         boolean deleted = citizenService.deleteCitizen(id);
         if (deleted) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

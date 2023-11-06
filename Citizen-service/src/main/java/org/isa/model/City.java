@@ -19,7 +19,6 @@ import java.util.UUID;
 @Table(name = "cities")
 public class City implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

@@ -1,7 +1,6 @@
 package org.isa.utils;
 
 import jakarta.annotation.PostConstruct;
-import jakarta.transaction.Transactional;
 import org.isa.model.Citizen;
 import org.isa.model.City;
 import org.isa.repository.CitizenRepository;
