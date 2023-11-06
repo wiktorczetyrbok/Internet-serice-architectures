@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class CityServiceImpl implements CityService {
 
     private final CityRepository cityRepository;
+
     public CityServiceImpl(CityRepository cityRepository) {
         this.cityRepository = cityRepository;
     }
@@ -51,5 +51,12 @@ public class CityServiceImpl implements CityService {
     @Override
     public List<CityDto> getAllCities() {
         return cityRepository.findAll().stream().map(CityMapper::mapToCityDto).toList();
+    }
+
+    @Override
+    public CityDto getCityById(UUID id) {
+        return CityMapper.mapToCityDto(cityRepository
+                .findById(id)
+                .orElseThrow(() -> new CityNotFoundException("City not found: " + id)));
     }
 }

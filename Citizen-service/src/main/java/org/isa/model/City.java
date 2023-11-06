@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -19,6 +18,7 @@ import java.util.UUID;
 @Table(name = "cities")
 public class City implements Serializable {
     @Id
+    @Column(unique = true)
     private UUID id;
     private String name;
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

@@ -2,6 +2,7 @@ package org.isa.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.isa.dto.CitizenDto;
+import org.isa.dto.GetCitizenDto;
 import org.isa.exception.CitizenNotFoundException;
 import org.isa.exception.CityNotFoundException;
 import org.isa.mapper.CitizenMapper;
@@ -36,10 +37,10 @@ public class CitizenServiceImpl implements CitizenService {
     }
 
     @Override
-    public List<CitizenDto> getAllCitizens() {
+    public List<GetCitizenDto> getAllCitizens() {
         List<Citizen> citizens = citizenRepository.findAll();
         return citizens.stream()
-                .map(CitizenMapper::mapToCitizenDto)
+                .map(CitizenMapper::mapToGetCitizenDto)
                 .collect(Collectors.toList());
     }
 
@@ -54,10 +55,10 @@ public class CitizenServiceImpl implements CitizenService {
     }
 
     @Override
-    public CitizenDto getCitizenByName(String name) {
+    public GetCitizenDto getCitizenByName(String name) {
         Citizen citizen = citizenRepository.findByName(name)
                 .orElseThrow(() -> new CitizenNotFoundException("Citizen not found: " + name));
-        return CitizenMapper.mapToCitizenDto(citizen);
+        return CitizenMapper.mapToGetCitizenDto(citizen);
     }
 
     @Override

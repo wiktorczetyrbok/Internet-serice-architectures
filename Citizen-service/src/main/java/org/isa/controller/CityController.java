@@ -43,6 +43,7 @@ public class CityController {
         List<CityDto> cities = cityService.getAllCities();
         return new ResponseEntity<>(cities, HttpStatus.OK);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCity(@PathVariable UUID id) {
         boolean deleted = cityService.deleteCity(id);

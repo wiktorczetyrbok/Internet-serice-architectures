@@ -1,6 +1,7 @@
 package org.isa.mapper;
 
 import org.isa.dto.CitizenDto;
+import org.isa.dto.GetCitizenDto;
 import org.isa.model.Citizen;
 import org.isa.model.City;
 
@@ -9,6 +10,15 @@ public class CitizenMapper {
 
         return CitizenDto.builder()
                 .cityId(citizen.getCity().getId())
+                .id(citizen.getId())
+                .name(citizen.getName())
+                .age(citizen.getAge())
+                .build();
+    }
+
+    public static GetCitizenDto mapToGetCitizenDto(Citizen citizen) {
+        return GetCitizenDto.builder()
+                .cityName(citizen.getCity().getName())
                 .id(citizen.getId())
                 .name(citizen.getName())
                 .age(citizen.getAge())

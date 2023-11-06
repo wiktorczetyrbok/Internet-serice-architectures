@@ -8,9 +8,12 @@ import java.util.UUID;
 
 public interface CityService {
     void addCity(CityDto cityDto);
+
     boolean deleteCity(UUID id);
 
     CityDto updateCity(UUID id, CityDto updatedCityDto);
 
     List<CityDto> getAllCities();
+
+    CityDto getCityById(UUID id);
 }

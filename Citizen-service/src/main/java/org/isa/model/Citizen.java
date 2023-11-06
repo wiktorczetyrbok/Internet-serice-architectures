@@ -17,6 +17,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Citizen implements Serializable {
     @Id
+    @Column(unique = true)
     private UUID id;
     private String name;
     private int age;

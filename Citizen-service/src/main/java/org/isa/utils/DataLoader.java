@@ -31,6 +31,7 @@ public class DataLoader {
         cityRepository.saveAll(cities);
 
     }
+
     public void loadCitizensToCity(List<City> cities, List<Citizen> listOfCitizens) {
         cities.get(0).setCitizens(Arrays.asList(listOfCitizens.get(0), listOfCitizens.get(1)));
         cities.get(0).setCitizens(Arrays.asList(listOfCitizens.get(2), listOfCitizens.get(3)));
@@ -75,6 +76,7 @@ public class DataLoader {
                 .city(cities.get(3)).build());
         return listOfCitizens;
     }
+
     public List<City> loadCities() {
         List<City> listOfCities = new ArrayList<>();
         listOfCities.add(City.builder().id(UUID.fromString("e340ba5d-de57-47db-a56f-5bd788f4d183"))

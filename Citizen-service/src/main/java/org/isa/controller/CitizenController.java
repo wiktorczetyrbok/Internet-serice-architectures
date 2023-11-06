@@ -1,7 +1,9 @@
 package org.isa.controller;
 
 import org.isa.dto.CitizenDto;
+import org.isa.dto.GetCitizenDto;
 import org.isa.exception.CitizenNotFoundException;
+import org.isa.exception.CityNotFoundException;
 import org.isa.service.CitizenService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,14 +24,19 @@ public class CitizenController {
     @PostMapping
     public ResponseEntity<Void> addNewCitizen(@RequestBody CitizenDto citizenDto) {
         citizenDto.setId(UUID.randomUUID());
-        citizenService.addCitizen(citizenDto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        try {
+            citizenService.addCitizen(citizenDto);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (CityNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        }
     }
 
     @GetMapping("/{name}")
-    public ResponseEntity<CitizenDto> getCitizenByName(@PathVariable String name) {
+    public ResponseEntity<GetCitizenDto> getCitizenByName(@PathVariable String name) {
         try {
-            CitizenDto citizen = citizenService.getCitizenByName(name);
+            GetCitizenDto citizen = citizenService.getCitizenByName(name);
             return new ResponseEntity<>(citizen, HttpStatus.OK);
         } catch (CitizenNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -43,8 +50,7 @@ public class CitizenController {
         try {
             CitizenDto updatedCitizen = citizenService.updateCitizen(id, updatedCitizenDto);
             return new ResponseEntity<>(updatedCitizen, HttpStatus.OK);
-        } catch (CitizenNotFoundException// | CityNotFoundException
-                e
+        } catch (CitizenNotFoundException | CityNotFoundException e
         ) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -54,15 +60,15 @@ public class CitizenController {
     public ResponseEntity<Void> deleteCitizen(@PathVariable UUID id) {
         boolean deleted = citizenService.deleteCitizen(id);
         if (deleted) {
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @GetMapping
-    public ResponseEntity<List<CitizenDto>> getAllCitizens() {
-        List<CitizenDto> citizens = citizenService.getAllCitizens();
+    public ResponseEntity<List<GetCitizenDto>> getAllCitizens() {
+        List<GetCitizenDto> citizens = citizenService.getAllCitizens();
         return new ResponseEntity<>(citizens, HttpStatus.OK);
     }
 }
