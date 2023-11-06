@@ -1,0 +1,12 @@
+### GET city by name
+GET http://localhost:8081/city/Gizyko
+
+### Get list of all cities
+GET http://localhost:8081/city
+
+### Get citizens list
+GET http://localhost:8081/citizen
+
+### Delete citizen  by  id
+DELETE http://localhost:8081/citizen/aa2b6af2-3c14-4784-b524-110798769d72
+
