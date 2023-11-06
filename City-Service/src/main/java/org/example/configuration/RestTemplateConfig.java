@@ -1,4 +1,4 @@
-package org.isa.configuration;
+package org.example.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 public class RestTemplateConfig {
 
     @Bean
-    public RestTemplate restTemplate(@Value("${isa.citizen.url}") String baseUrl) {
+    public RestTemplate restTemplate(@Value("${isa.city.url}") String baseUrl) {
         return new RestTemplateBuilder().rootUri(baseUrl).build();
     }
 }

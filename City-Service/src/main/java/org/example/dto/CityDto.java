@@ -12,5 +12,4 @@ public class CityDto {
     private UUID id;
     private String name;
     private double area;
-    private List<UUID> citizensIds;
 }

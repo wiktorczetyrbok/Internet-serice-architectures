@@ -5,6 +5,7 @@ import org.example.exception.CityNotFoundException;
 import org.example.mapper.CityMapper;
 import org.example.model.City;
 import org.example.repository.CityRepository;
+import org.example.repository.CityRestRepository;
 import org.example.service.CityService;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +17,18 @@ import java.util.stream.Collectors;
 public class CityServiceImpl implements CityService {
 
     private final CityRepository cityRepository;
+    private final CityRestRepository cityRestRepository;
 
-    public CityServiceImpl(CityRepository cityRepository) {
+    public CityServiceImpl(CityRepository cityRepository,
+                           CityRestRepository cityRestRepository) {
         this.cityRepository = cityRepository;
+        this.cityRestRepository = cityRestRepository;
     }
 
     @Override
     public void addCity(CityDto cityDto) {
         City city = CityMapper.mapToCity(cityDto);
+        cityRestRepository.addCity(cityDto);
         cityRepository.save(city);
     }
 
@@ -50,6 +55,7 @@ public class CityServiceImpl implements CityService {
         if (city == null) {
             return false;
         }
+        cityRestRepository.delete(id);
         cityRepository.delete(city);
         return true;
     }
@@ -60,7 +66,11 @@ public class CityServiceImpl implements CityService {
                 .orElseThrow(() -> new CityNotFoundException("City not found: " + id));
 
         city.setName(updatedCityDto.getName());
+        if (!city.getName().equalsIgnoreCase(updatedCityDto.getName())) {
+            cityRestRepository.updateName(updatedCityDto);
+        }
         city.setArea(updatedCityDto.getArea());
+
         cityRepository.save(city);
 
         return CityMapper.mapToCityDto(city);
