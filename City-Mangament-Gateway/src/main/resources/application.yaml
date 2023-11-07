@@ -11,4 +11,10 @@ isa:
     url: http://localhost:8081
 
 
-
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
