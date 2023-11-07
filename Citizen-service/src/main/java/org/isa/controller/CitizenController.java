@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/citizen")
+@RequestMapping("/citizens")
 public class CitizenController {
     private final CitizenService citizenService;
 
