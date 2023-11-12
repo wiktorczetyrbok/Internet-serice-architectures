@@ -1,19 +1,20 @@
 package org.isa.service;
 
 
-import org.isa.dto.CityDto;
+import org.isa.dto.citizen.GetCityResponse;
+import org.isa.dto.citizen.PutCityRequest;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface CityService {
-    void addCity(CityDto cityDto);
+    void addCity(GetCityResponse getCityResponse);
 
     boolean deleteCity(UUID id);
 
-    CityDto updateCity(UUID id, CityDto updatedCityDto);
+    GetCityResponse updateCity(UUID id, PutCityRequest putCityRequest);
 
-    List<CityDto> getAllCities();
+    List<GetCityResponse> getAllCities();
 
-    CityDto getCityById(UUID id);
+    GetCityResponse getCityById(UUID id);
 }
