@@ -1,7 +1,10 @@
 package org.isa.controller;
 
-import org.isa.dto.CitizenDto;
-import org.isa.dto.GetCitizenDto;
+import lombok.RequiredArgsConstructor;
+import org.isa.dto.city.GetCitizenCityNameResponse;
+import org.isa.dto.city.GetCitizenResponse;
+import org.isa.dto.city.GetCitizensResponse;
+import org.isa.dto.city.PutCitizenRequest;
 import org.isa.exception.CitizenNotFoundException;
 import org.isa.exception.CityNotFoundException;
 import org.isa.service.CitizenService;
@@ -9,23 +12,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/citizens")
+@RequiredArgsConstructor
 public class CitizenController {
     private final CitizenService citizenService;
 
-    public CitizenController(CitizenService citizenService) {
-        this.citizenService = citizenService;
-    }
-
     @PostMapping
-    public ResponseEntity<Void> addNewCitizen(@RequestBody CitizenDto citizenDto) {
-        citizenDto.setId(UUID.randomUUID());
+    public ResponseEntity<Void> addNewCitizen(@RequestBody GetCitizenResponse getCitizenResponse) {
+        getCitizenResponse.setId(UUID.randomUUID());
         try {
-            citizenService.addCitizen(citizenDto);
+            citizenService.addCitizen(getCitizenResponse);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (CityNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -34,9 +33,9 @@ public class CitizenController {
     }
 
     @GetMapping("/{name}")
-    public ResponseEntity<GetCitizenDto> getCitizenByName(@PathVariable String name) {
+    public ResponseEntity<GetCitizenCityNameResponse> getCitizenByName(@PathVariable String name) {
         try {
-            GetCitizenDto citizen = citizenService.getCitizenByName(name);
+            GetCitizenCityNameResponse citizen = citizenService.getCitizenByName(name);
             return new ResponseEntity<>(citizen, HttpStatus.OK);
         } catch (CitizenNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -44,11 +43,11 @@ public class CitizenController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CitizenDto> updateCitizen(
+    public ResponseEntity<GetCitizenResponse> updateCitizen(
             @PathVariable UUID id,
-            @RequestBody CitizenDto updatedCitizenDto) {
+            @RequestBody PutCitizenRequest putCitizenRequest) {
         try {
-            CitizenDto updatedCitizen = citizenService.updateCitizen(id, updatedCitizenDto);
+            GetCitizenResponse updatedCitizen = citizenService.updateCitizen(id, putCitizenRequest);
             return new ResponseEntity<>(updatedCitizen, HttpStatus.OK);
         } catch (CitizenNotFoundException | CityNotFoundException e
         ) {
@@ -67,8 +66,8 @@ public class CitizenController {
     }
 
     @GetMapping
-    public ResponseEntity<List<GetCitizenDto>> getAllCitizens() {
-        List<GetCitizenDto> citizens = citizenService.getAllCitizens();
+    public ResponseEntity<GetCitizensResponse> getAllCitizens() {
+        GetCitizensResponse citizens = citizenService.getAllCitizens();
         return new ResponseEntity<>(citizens, HttpStatus.OK);
     }
 }
