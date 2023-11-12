@@ -1,5 +1,7 @@
 package org.example.controller;
 
+import lombok.RequiredArgsConstructor;
+import org.example.dto.GetCitiesResponse;
 import org.example.dto.GetCityResponse;
 import org.example.dto.PutCityRequest;
 import org.example.exception.CityNotFoundException;
@@ -8,17 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/cities")
+@RequiredArgsConstructor
 public class CityController {
     private final CityService cityService;
-
-    public CityController(CityService cityService) {
-        this.cityService = cityService;
-    }
 
     @PostMapping
     public ResponseEntity<Void> addNewCity(@RequestBody GetCityResponse getCityResponse) {
@@ -41,8 +39,8 @@ public class CityController {
     }
 
     @GetMapping
-    public ResponseEntity<List<GetCityResponse>> getAllCities() {
-        List<GetCityResponse> cities = cityService.getAllCities();
+    public ResponseEntity<GetCitiesResponse> getAllCities() {
+        GetCitiesResponse cities = cityService.getAllCities();
         return new ResponseEntity<>(cities, HttpStatus.OK);
     }
 

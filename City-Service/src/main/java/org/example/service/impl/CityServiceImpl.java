@@ -1,5 +1,7 @@
 package org.example.service.impl;
 
+import lombok.RequiredArgsConstructor;
+import org.example.dto.GetCitiesResponse;
 import org.example.dto.GetCityResponse;
 import org.example.dto.PutCityRequest;
 import org.example.exception.CityNotFoundException;
@@ -10,21 +12,14 @@ import org.example.repository.CityRestRepository;
 import org.example.service.CityService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class CityServiceImpl implements CityService {
 
     private final CityRepository cityRepository;
     private final CityRestRepository cityRestRepository;
-
-    public CityServiceImpl(CityRepository cityRepository,
-                           CityRestRepository cityRestRepository) {
-        this.cityRepository = cityRepository;
-        this.cityRestRepository = cityRestRepository;
-    }
 
     @Override
     public void addCity(GetCityResponse getCityResponse) {
@@ -34,11 +29,8 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public List<GetCityResponse> getAllCities() {
-        List<City> cities = cityRepository.findAll();
-        return cities.stream()
-                .map(CityMapper::mapToCityDto)
-                .collect(Collectors.toList());
+    public GetCitiesResponse getAllCities() {
+        return CityMapper.mapToGetCitiesResponse(cityRepository.findAll());
     }
 
     @Override
@@ -47,7 +39,7 @@ public class CityServiceImpl implements CityService {
         if (city == null) {
             throw new CityNotFoundException("City not found: " + cityName);
         }
-        return CityMapper.mapToCityDto(city);
+        return CityMapper.mapToGetCityResponse(city);
     }
 
     @Override
@@ -74,7 +66,7 @@ public class CityServiceImpl implements CityService {
 
         cityRepository.save(city);
 
-        return CityMapper.mapToCityDto(city);
+        return CityMapper.mapToGetCityResponse(city);
     }
 
 }

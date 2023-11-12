@@ -19,12 +19,6 @@ public class DataLoader {
         this.cityRepository = cityRepository;
     }
 
-    @PostConstruct
-    public void persistData() {
-        List<City> listOfCities = DataLoader.loadCities();
-        cityRepository.saveAll(listOfCities);
-    }
-
     private static List<City> loadCities() {
         List<City> listOfCities = new ArrayList<>();
         listOfCities.add(City.builder().id(UUID.fromString("e340ba5d-de57-47db-a56f-5bd788f4d183"))
@@ -40,5 +34,11 @@ public class DataLoader {
                 .name("Krakow").area(10123123).build());
 
         return listOfCities;
+    }
+
+    @PostConstruct
+    public void persistData() {
+        List<City> listOfCities = DataLoader.loadCities();
+        cityRepository.saveAll(listOfCities);
     }
 }

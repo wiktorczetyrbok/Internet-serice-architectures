@@ -1,15 +1,15 @@
 package org.example.service;
 
+import org.example.dto.GetCitiesResponse;
 import org.example.dto.GetCityResponse;
 import org.example.dto.PutCityRequest;
 
-import java.util.List;
 import java.util.UUID;
 
 public interface CityService {
     void addCity(GetCityResponse getCityResponse);
 
-    List<GetCityResponse> getAllCities();
+    GetCitiesResponse getAllCities();
 
     GetCityResponse getCityByName(String cityName);
 

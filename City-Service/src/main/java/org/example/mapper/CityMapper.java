@@ -1,7 +1,10 @@
 package org.example.mapper;
 
+import org.example.dto.GetCitiesResponse;
 import org.example.dto.GetCityResponse;
 import org.example.model.City;
+
+import java.util.List;
 
 public class CityMapper {
 
@@ -13,11 +16,20 @@ public class CityMapper {
                 .build();
     }
 
-    public static GetCityResponse mapToCityDto(City city) {
+    public static GetCityResponse mapToGetCityResponse(City city) {
         return GetCityResponse.builder()
                 .id(city.getId())
                 .area(city.getArea())
                 .name(city.getName())
                 .build();
     }
+
+    public static GetCitiesResponse mapToGetCitiesResponse(List<City> cities) {
+        return GetCitiesResponse.builder()
+                .getCityResponses(cities.stream()
+                        .map(CityMapper::mapToGetCityResponse)
+                        .toList())
+                .build();
+    }
+
 }
