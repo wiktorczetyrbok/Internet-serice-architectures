@@ -44,10 +44,10 @@ public class CityController {
         return new ResponseEntity<>(cities, HttpStatus.OK);
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<GetCityResponse> getCity(@PathVariable String name) {
+    @GetMapping("/{id}")
+    public ResponseEntity<GetCityResponse> getCityById(@PathVariable UUID id) {
         try {
-            GetCityResponse city = cityService.getCityByName(name);
+            GetCityResponse city = cityService.getCityById(id);
             return new ResponseEntity<>(city, HttpStatus.OK);
         } catch (CityNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

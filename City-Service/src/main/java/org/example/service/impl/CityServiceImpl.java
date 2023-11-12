@@ -34,11 +34,10 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public GetCityResponse getCityByName(String cityName) {
-        City city = cityRepository.getCityByName(cityName);
-        if (city == null) {
-            throw new CityNotFoundException("City not found: " + cityName);
-        }
+    public GetCityResponse getCityById(UUID id) {
+        City city = cityRepository
+                .findById(id)
+                .orElseThrow(() -> new CityNotFoundException("City not found: " + id));
         return CityMapper.mapToGetCityResponse(city);
     }
 

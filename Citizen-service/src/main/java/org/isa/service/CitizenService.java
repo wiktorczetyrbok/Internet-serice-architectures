@@ -15,7 +15,7 @@ public interface CitizenService {
 
     boolean deleteCitizen(UUID id);
 
-    GetCitizenCityNameResponse getCitizenByName(String name);
-
     GetCitizenResponse updateCitizen(UUID id, PutCitizenRequest putCitizenRequest);
+
+    GetCitizenCityNameResponse getCitizenById(UUID uuid);
 }

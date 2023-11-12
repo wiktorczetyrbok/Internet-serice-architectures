@@ -32,10 +32,10 @@ public class CitizenController {
         }
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<GetCitizenCityNameResponse> getCitizenByName(@PathVariable String name) {
+    @GetMapping("/{id}")
+    public ResponseEntity<GetCitizenCityNameResponse> getCitizenById(@PathVariable UUID id) {
         try {
-            GetCitizenCityNameResponse citizen = citizenService.getCitizenByName(name);
+            GetCitizenCityNameResponse citizen = citizenService.getCitizenById(id);
             return new ResponseEntity<>(citizen, HttpStatus.OK);
         } catch (CitizenNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

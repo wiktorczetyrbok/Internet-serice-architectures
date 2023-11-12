@@ -10,5 +10,5 @@ import java.util.List;
 @Builder
 public class GetCitiesResponse {
     @Singular
-    private List<GetCityResponse> getCityResponses;
+    private List<GetCityResponse> cities;
 }

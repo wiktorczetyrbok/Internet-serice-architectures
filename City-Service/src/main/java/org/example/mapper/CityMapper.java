@@ -26,7 +26,7 @@ public class CityMapper {
 
     public static GetCitiesResponse mapToGetCitiesResponse(List<City> cities) {
         return GetCitiesResponse.builder()
-                .getCityResponses(cities.stream()
+                .cities(cities.stream()
                         .map(CityMapper::mapToGetCityResponse)
                         .toList())
                 .build();

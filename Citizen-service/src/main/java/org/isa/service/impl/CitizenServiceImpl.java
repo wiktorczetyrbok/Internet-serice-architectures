@@ -51,13 +51,6 @@ public class CitizenServiceImpl implements CitizenService {
     }
 
     @Override
-    public GetCitizenCityNameResponse getCitizenByName(String name) {
-        Citizen citizen = citizenRepository.findByName(name)
-                .orElseThrow(() -> new CitizenNotFoundException("Citizen not found: " + name));
-        return CitizenMapper.mapToGetCitizenDto(citizen);
-    }
-
-    @Override
     public GetCitizenResponse updateCitizen(UUID id, PutCitizenRequest putCitizenRequest) {
         Citizen existingCitizen = citizenRepository.findById(id)
                 .orElseThrow(() -> new CitizenNotFoundException("Citizen not found: " + id));
@@ -67,6 +60,13 @@ public class CitizenServiceImpl implements CitizenService {
         citizenRepository.save(existingCitizen);
 
         return CitizenMapper.mapToCitizenDto(existingCitizen);
+    }
+
+    @Override
+    public GetCitizenCityNameResponse getCitizenById(UUID uuid) {
+        Citizen citizen = citizenRepository.findById(uuid)
+                .orElseThrow(() -> new CitizenNotFoundException("Citizen not found: " + uuid));
+        return CitizenMapper.mapToGetCitizenDto(citizen);
     }
 }
 

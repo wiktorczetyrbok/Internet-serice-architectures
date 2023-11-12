@@ -11,7 +11,7 @@ public interface CityService {
 
     GetCitiesResponse getAllCities();
 
-    GetCityResponse getCityByName(String cityName);
+    GetCityResponse getCityById(UUID id);
 
     boolean deleteCity(UUID id);
 
