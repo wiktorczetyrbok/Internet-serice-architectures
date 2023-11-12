@@ -1,14 +1,13 @@
-package org.isa.dto;
+package org.isa.dto.city;
 
 import lombok.Builder;
 import lombok.Data;
 
-import java.io.Serializable;
 import java.util.UUID;
 
 @Data
 @Builder
-public class CitizenDto implements Serializable {
+public class GetCitizenResponse {
     private UUID id;
     private String name;
     private int age;
