@@ -1,59 +1,59 @@
-### GET city by name
-GET http://localhost:8080/city/Gizyko
+### GET cities by name
+GET http://localhost:8080/cities/Gizyko
 
-### GET city by name not exsisting
-GET http://localhost:8080/city/fsdjkbnf
+### GET cities by name not exsisting
+GET http://localhost:8080/cities/fsdjkbnf
 
 ### Get list of all cities
-GET http://localhost:8080/city
+GET http://localhost:8080/cities
 
 ### Get citizens list
-GET http://localhost:8080/citizen
+GET http://localhost:8080/citizens
 
-### Get  single citizen by name
-GET http://localhost:8080/citizen/Wiktor%20Czetyrbok
+### Get  single citizens by name
+GET http://localhost:8080/citizens/Wiktor%20Czetyrbok
 
-### Create new citizen
-POST http://localhost:8080/citizen
+### Create new citizens
+POST http://localhost:8080/citizens
 
 Request Body:
 {
     "name": "Kasztan",
     "age": 25,
-    "cityName": "Gizyko"
+    "citiesName": "Gizyko"
 }
-### Update  city
-POST http://localhost:8080/city
+### Update  cities
+POST http://localhost:8080/cities
 
 Request Body:
 {
     "name": "NewCity",
     "area": 100,
-    "citizensID": []
+    "citizenssID": []
 }
 
-### Update a citizen by name (PUT method)
-PUT http://localhost:8080/citizen/{{$random.uuid}}
+### Update a citizens by name (PUT method)
+PUT http://localhost:8080/citizens/{{$random.uuid}}
 
 Request Body:
 {
     "name": "UpdatedName",
     "age": 30,
-    "cityName": "UpdatedCity"
+    "citiesName": "UpdatedCity"
 }
 
-### Update a city by name (PUT method)
-PUT http://localhost:8080/city/{{$random.uuid}}
+### Update a cities by name (PUT method)
+PUT http://localhost:8080/cities/{{$random.uuid}}
 
 Request Body:
 {
     "name": "UpdatedCityName",
     "area": 150,
-    "citizensID": []
+    "citizenssID": []
 }
 
-### Delete citizen  by  id
-DELETE http://localhost:8080/citizen/{{$random.uuid}}
+### Delete citizens  by  id
+DELETE http://localhost:8080/citizens/{{$random.uuid}}
 
 ### DELETE CITY by id
-DELETE http://localhost:8080/city/{{$random.uuid}}
+DELETE http://localhost:8080/cities/{{$random.uuid}}

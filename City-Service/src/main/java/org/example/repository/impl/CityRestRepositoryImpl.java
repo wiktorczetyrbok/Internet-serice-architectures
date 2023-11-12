@@ -1,10 +1,12 @@
 package org.example.repository.impl;
 
 import org.example.configuration.CityRestApiUrl;
-import org.example.dto.CityDto;
+import org.example.dto.GetCityResponse;
+import org.example.dto.PutCityRequest;
 import org.example.repository.CityRestRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.UUID;
 
@@ -25,12 +27,17 @@ public class CityRestRepositoryImpl implements CityRestRepository {
     }
 
     @Override
-    public void updateName(CityDto cityDto) {
-        restTemplate.put(restApiUrl.getPutUrl(), cityDto);
+    public void updateName(UUID id, PutCityRequest putCityRequest) {
+        String url = UriComponentsBuilder.fromUriString(restApiUrl.getPutUrl())
+                .pathSegment("{id}")
+                .buildAndExpand(id)
+                .toUriString();
+
+        restTemplate.put(url, putCityRequest);
     }
 
     @Override
-    public void addCity(CityDto cityDto) {
-        restTemplate.postForLocation(restApiUrl.getPostUrl(), cityDto);
+    public void addCity(GetCityResponse getCityResponse) {
+        restTemplate.postForLocation(restApiUrl.getPostUrl(), getCityResponse);
     }
 }

@@ -16,16 +16,16 @@ public class GatewayConfig {
                                      @Value("${isa.gateway.host}") String host) {
         return builder.routes()
                 .route("city_route", r -> r
-                        .path("/city/**")
+                        .path("/cities/**")
                         .uri(cityUrl))
                 .route("citizen_route", r -> r
-                        .path("/citizen/**")
+                        .path("/citizens/**")
                         .uri(citizenUrl))
                 .route("city_id_route", r -> r
-                        .path("/city/{id}")
+                        .path("/cities/{id}")
                         .uri(cityUrl))
                 .route("citizen_id_route", r -> r
-                        .path("/citizen/{id}")
+                        .path("/citizens/{id}")
                         .uri(citizenUrl))
                 .route("fallback_route", r -> r
                         .path("/**")

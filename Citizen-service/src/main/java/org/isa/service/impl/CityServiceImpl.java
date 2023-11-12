@@ -1,7 +1,9 @@
 package org.isa.service.impl;
 
 
-import org.isa.dto.CityDto;
+import lombok.RequiredArgsConstructor;
+import org.isa.dto.citizen.GetCityResponse;
+import org.isa.dto.citizen.PutCityRequest;
 import org.isa.exception.CityNotFoundException;
 import org.isa.mapper.CityMapper;
 import org.isa.model.City;
@@ -13,17 +15,14 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class CityServiceImpl implements CityService {
 
     private final CityRepository cityRepository;
 
-    public CityServiceImpl(CityRepository cityRepository) {
-        this.cityRepository = cityRepository;
-    }
-
     @Override
-    public void addCity(CityDto cityDto) {
-        City city = CityMapper.mapToCity(cityDto);
+    public void addCity(GetCityResponse getCityResponse) {
+        City city = CityMapper.mapToCity(getCityResponse);
         cityRepository.save(city);
     }
 
@@ -38,24 +37,24 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public CityDto updateCity(UUID id, CityDto updatedCityDto) {
+    public GetCityResponse updateCity(UUID id, PutCityRequest putCityRequest) {
         City city = cityRepository.findById(id)
                 .orElseThrow(() -> new CityNotFoundException("City not found: " + id));
-        city.setName(updatedCityDto.getName());
+        city.setName(putCityRequest.getName());
 
         cityRepository.save(city);
 
-        return CityMapper.mapToCityDto(city);
+        return CityMapper.mapToGetCityResponse(city);
     }
 
     @Override
-    public List<CityDto> getAllCities() {
-        return cityRepository.findAll().stream().map(CityMapper::mapToCityDto).toList();
+    public List<GetCityResponse> getAllCities() {
+        return cityRepository.findAll().stream().map(CityMapper::mapToGetCityResponse).toList();
     }
 
     @Override
-    public CityDto getCityById(UUID id) {
-        return CityMapper.mapToCityDto(cityRepository
+    public GetCityResponse getCityById(UUID id) {
+        return CityMapper.mapToGetCityResponse(cityRepository
                 .findById(id)
                 .orElseThrow(() -> new CityNotFoundException("City not found: " + id)));
     }

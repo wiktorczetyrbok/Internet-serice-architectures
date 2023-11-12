@@ -1,14 +1,17 @@
 package org.isa.mapper;
 
-import org.isa.dto.CitizenDto;
-import org.isa.dto.GetCitizenDto;
+import org.isa.dto.city.GetCitizenCityNameResponse;
+import org.isa.dto.city.GetCitizenResponse;
+import org.isa.dto.city.GetCitizensResponse;
 import org.isa.model.Citizen;
 import org.isa.model.City;
 
-public class CitizenMapper {
-    public static CitizenDto mapToCitizenDto(Citizen citizen) {
+import java.util.List;
 
-        return CitizenDto.builder()
+public class CitizenMapper {
+    public static GetCitizenResponse mapToCitizenDto(Citizen citizen) {
+
+        return GetCitizenResponse.builder()
                 .cityId(citizen.getCity().getId())
                 .id(citizen.getId())
                 .name(citizen.getName())
@@ -16,8 +19,8 @@ public class CitizenMapper {
                 .build();
     }
 
-    public static GetCitizenDto mapToGetCitizenDto(Citizen citizen) {
-        return GetCitizenDto.builder()
+    public static GetCitizenCityNameResponse mapToGetCitizenDto(Citizen citizen) {
+        return GetCitizenCityNameResponse.builder()
                 .cityName(citizen.getCity().getName())
                 .id(citizen.getId())
                 .name(citizen.getName())
@@ -25,12 +28,20 @@ public class CitizenMapper {
                 .build();
     }
 
-    public static Citizen mapToCitizen(CitizenDto citizenDto, City city) {
+    public static Citizen mapToCitizen(GetCitizenResponse getCitizenResponse, City city) {
         return Citizen.builder()
-                .id(citizenDto.getId())
+                .id(getCitizenResponse.getId())
                 .city(city)
-                .name(citizenDto.getName())
-                .age(citizenDto.getAge())
+                .name(getCitizenResponse.getName())
+                .age(getCitizenResponse.getAge())
+                .build();
+    }
+
+    public static GetCitizensResponse mapToGetCitizensResponse(List<Citizen> citizens) {
+        return GetCitizensResponse.builder()
+                .citizens(citizens.stream()
+                        .map(CitizenMapper::mapToCitizenDto)
+                        .toList())
                 .build();
     }
 }

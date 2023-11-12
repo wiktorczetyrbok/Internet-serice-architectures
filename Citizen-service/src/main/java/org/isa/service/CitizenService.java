@@ -1,20 +1,21 @@
 package org.isa.service;
 
-import org.isa.dto.CitizenDto;
-import org.isa.dto.GetCitizenDto;
+import org.isa.dto.city.GetCitizenCityNameResponse;
+import org.isa.dto.city.GetCitizenResponse;
+import org.isa.dto.city.GetCitizensResponse;
+import org.isa.dto.city.PutCitizenRequest;
 
-import java.util.List;
 import java.util.UUID;
 
 public interface CitizenService {
-    void addCitizen(CitizenDto citizenDto);
+    void addCitizen(GetCitizenResponse getCitizenResponse);
 
 
-    List<GetCitizenDto> getAllCitizens();
+    GetCitizensResponse getAllCitizens();
 
     boolean deleteCitizen(UUID id);
 
-    GetCitizenDto getCitizenByName(String name);
+    GetCitizenResponse updateCitizen(UUID id, PutCitizenRequest putCitizenRequest);
 
-    CitizenDto updateCitizen(UUID id, CitizenDto updatedCitizenDto);
+    GetCitizenCityNameResponse getCitizenById(UUID uuid);
 }

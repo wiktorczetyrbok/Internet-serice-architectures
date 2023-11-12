@@ -17,6 +17,6 @@ spring:
 isa:
   city:
     url: http://localhost:8081/
-    url.delete: /city/{id}
-    url.put: /city/{id}
-    url.post: /city
+    url.delete: /cities/{id}
+    url.put: /cities/{id}
+    url.post: /cities
