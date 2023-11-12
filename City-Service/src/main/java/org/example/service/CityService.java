@@ -1,18 +1,19 @@
 package org.example.service;
 
-import org.example.dto.CityDto;
+import org.example.dto.GetCityResponse;
+import org.example.dto.PutCityRequest;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface CityService {
-    void addCity(CityDto cityDto);
+    void addCity(GetCityResponse getCityResponse);
 
-    List<CityDto> getAllCities();
+    List<GetCityResponse> getAllCities();
 
-    CityDto getCityByName(String cityName);
+    GetCityResponse getCityByName(String cityName);
 
     boolean deleteCity(UUID id);
 
-    CityDto updateCity(UUID id, CityDto updatedCityDto);
+    GetCityResponse updateCity(UUID id, PutCityRequest putCityRequest);
 }

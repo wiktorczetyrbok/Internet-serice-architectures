@@ -1,6 +1,7 @@
 package org.example.controller;
 
-import org.example.dto.CityDto;
+import org.example.dto.GetCityResponse;
+import org.example.dto.PutCityRequest;
 import org.example.exception.CityNotFoundException;
 import org.example.service.CityService;
 import org.springframework.http.HttpStatus;
@@ -20,19 +21,19 @@ public class CityController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> addNewCity(@RequestBody CityDto cityDto) {
-        cityDto.setId(UUID.randomUUID());
-        cityService.addCity(cityDto);
+    public ResponseEntity<Void> addNewCity(@RequestBody GetCityResponse getCityResponse) {
+        getCityResponse.setId(UUID.randomUUID());
+        cityService.addCity(getCityResponse);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CityDto> updateCity(
+    public ResponseEntity<GetCityResponse> updateCity(
             @PathVariable UUID id,
-            @RequestBody CityDto updatedCityDto
+            @RequestBody PutCityRequest putCityRequest
     ) {
         try {
-            CityDto updatedCity = cityService.updateCity(id, updatedCityDto);
+            GetCityResponse updatedCity = cityService.updateCity(id, putCityRequest);
             return new ResponseEntity<>(updatedCity, HttpStatus.OK);
         } catch (CityNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -40,15 +41,15 @@ public class CityController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CityDto>> getAllCities() {
-        List<CityDto> cities = cityService.getAllCities();
+    public ResponseEntity<List<GetCityResponse>> getAllCities() {
+        List<GetCityResponse> cities = cityService.getAllCities();
         return new ResponseEntity<>(cities, HttpStatus.OK);
     }
 
     @GetMapping("/{name}")
-    public ResponseEntity<CityDto> getCity(@PathVariable String name) {
+    public ResponseEntity<GetCityResponse> getCity(@PathVariable String name) {
         try {
-            CityDto city = cityService.getCityByName(name);
+            GetCityResponse city = cityService.getCityByName(name);
             return new ResponseEntity<>(city, HttpStatus.OK);
         } catch (CityNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

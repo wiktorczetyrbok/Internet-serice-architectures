@@ -1,6 +1,7 @@
 package org.example.service.impl;
 
-import org.example.dto.CityDto;
+import org.example.dto.GetCityResponse;
+import org.example.dto.PutCityRequest;
 import org.example.exception.CityNotFoundException;
 import org.example.mapper.CityMapper;
 import org.example.model.City;
@@ -26,14 +27,14 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public void addCity(CityDto cityDto) {
-        City city = CityMapper.mapToCity(cityDto);
-        cityRestRepository.addCity(cityDto);
+    public void addCity(GetCityResponse getCityResponse) {
+        City city = CityMapper.mapToCity(getCityResponse);
+        cityRestRepository.addCity(getCityResponse);
         cityRepository.save(city);
     }
 
     @Override
-    public List<CityDto> getAllCities() {
+    public List<GetCityResponse> getAllCities() {
         List<City> cities = cityRepository.findAll();
         return cities.stream()
                 .map(CityMapper::mapToCityDto)
@@ -41,7 +42,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public CityDto getCityByName(String cityName) {
+    public GetCityResponse getCityByName(String cityName) {
         City city = cityRepository.getCityByName(cityName);
         if (city == null) {
             throw new CityNotFoundException("City not found: " + cityName);
@@ -61,15 +62,15 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public CityDto updateCity(UUID id, CityDto updatedCityDto) {
+    public GetCityResponse updateCity(UUID id, PutCityRequest putCityRequest) {
         City city = cityRepository.findById(id)
                 .orElseThrow(() -> new CityNotFoundException("City not found: " + id));
 
-        city.setName(updatedCityDto.getName());
-        if (!city.getName().equalsIgnoreCase(updatedCityDto.getName())) {
-            cityRestRepository.updateName(updatedCityDto);
+        city.setName(putCityRequest.getName());
+        if (!city.getName().equalsIgnoreCase(putCityRequest.getName())) {
+            cityRestRepository.updateName(id, putCityRequest);
         }
-        city.setArea(updatedCityDto.getArea());
+        city.setArea(putCityRequest.getArea());
 
         cityRepository.save(city);
 
