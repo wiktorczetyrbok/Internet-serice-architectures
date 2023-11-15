@@ -15,10 +15,10 @@ export class CityService {
     }
 
     getCities(): Observable<Cities> {
-        return this.http.get<Cities>('http://localhost:8080/cities');
+        return this.http.get<Cities>('http://localhost:8083/cities');
     }
 
     deleteCity(uuid: string): Observable<any> {
-        return this.http.delete('http://localhost:8080/cities/' + uuid);
+        return this.http.delete('http://localhost:8083/cities/' + uuid);
     }
 }

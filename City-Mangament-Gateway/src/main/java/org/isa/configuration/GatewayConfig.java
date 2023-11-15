@@ -5,20 +5,10 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.cors.reactive.CorsWebFilter;
-
-import java.util.Arrays;
-import java.util.Collections;
 
 
 @Configuration
 public class GatewayConfig {
-    @CrossOrigin(origins = "http://localhost:4200")
-
     @Bean
     public RouteLocator routeLocator(RouteLocatorBuilder builder,
                                      @Value("${isa.city.url}") String cityUrl,

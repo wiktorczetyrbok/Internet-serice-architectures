@@ -10,18 +10,24 @@ isa:
   citizen:
     url: http://localhost:8081
 
-
 spring:
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lowerCaseServiceId: true
-      globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins: "http://localhost:4200"
-            allowedMethods: "GET,POST,PUT,DELETE"
-            allowedHeaders: "*"
+      routes:
+        - id: cors_route
+          uri: http://localhost:4200
+          predicates:
+            - Path=/service/**
+          filters:
+            - RemoveRequestHeader=Host
+          metadata:
+            cors:
+              allowedOrigins: '*'
+              allowedMethods:
+                - GET
+                - POST
+                - PUT
+                - DELETE
+              allowedHeaders: '*'
+              maxAge: 30
 

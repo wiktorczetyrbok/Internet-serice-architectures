@@ -1,40 +1,17 @@
-<article *ngIf="citizen">
-    <header><h2>{{citizen.name}}</h2></header>
+<article *ngIf="citizen" class="citizen-card">
+    <header>
+        <h2>{{citizen.name}}</h2>
+    </header>
 
     <div class="container">
-        <div class="row">
-            <div class="col-4">
-                <div class="row mb-2">
-                    <div class="col-6">
-                        Level &amp; City
-                    </div>
-                    <div class="col-6">
-                        <span>{{citizen.city.id}}</span>
-                    </div>
-                </div>
+        <div class="info-row">
+            <div class="label">City</div>
+            <div class="info">{{citizen.city.name}}</div>
+        </div>
 
-                <div class="row mb-2">
-                    <div class="col-6">
-                        Age
-                    </div>
-                    <div class="col-6">
-                        <span>{{citizen.age}}</span>
-                    </div>
-                </div>
-
-                <div class="row mb-2">
-                    <div class="col-6">
-                        Age
-                    </div>
-                    <div class="col-6">
-                        <span>{{citizen.age}}</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-3">
-                <img alt="citizen portrait" src="/api/citizens/{{citizen.id}}/portrait"/>
-            </div>
+        <div class="info-row">
+            <div class="label">Age</div>
+            <div class="info">{{citizen.age}}</div>
         </div>
     </div>
 </article>

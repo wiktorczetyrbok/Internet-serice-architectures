@@ -4,7 +4,6 @@
     <table *ngIf="citizens">
         <thead>
         <tr>
-            <th>Portrait</th>
             <th>Name</th>
             <th>View</th>
             <th>Edit</th>
@@ -13,11 +12,6 @@
         </thead>
         <tbody>
         <tr *ngFor="let citizen of citizens.citizens">
-            <td>
-<!--
-                <img alt="Citizen portrait" class="portrait" src="/citizens/{{citizen.id}}/portrait"/>
--->
-            </td>
             <td>{{citizen.name}}</td>
             <td>
                 <a [routerLink]="['/citizens', citizen.id]">View</a>
