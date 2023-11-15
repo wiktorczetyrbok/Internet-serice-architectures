@@ -13,21 +13,21 @@ export class CitizenService {
     }
 
     getCitizens(): Observable<Citizens> {
-        return this.http.get<Citizens>('http://localhost:8083/citizens');
+        return this.http.get<Citizens>('/api/citizens');
     }
 
 
     getCitizen(uuid: string): Observable<CitizenDetails> {
-        return this.http.get<CitizenDetails>('http://localhost:8083/citizens/' + uuid);
+        return this.http.get<CitizenDetails>('/api/citizens/' + uuid);
     }
 
 
     deleteCitizen(uuid: string): Observable<any> {
-        return this.http.delete('http://localhost:8083/citizens/' + uuid);
+        return this.http.delete('/api/citizens/' + uuid);
     }
 
     putCity(uuid: string, request: CitizenForm): Observable<any> {
-        return this.http.put('http://localhost:8083/citizens/' + uuid, request);
+        return this.http.put('/api/citizens/' + uuid, request);
     }
 
 }
