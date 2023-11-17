@@ -41,7 +41,7 @@ export class CitizenEditComponent implements OnInit {
                     this.citizen = {
                         name: citizen.name,
                         age: citizen.age,
-                        city: citizen.city_id
+                        city: citizen.city_name
                     };
                     this.original = {...this.citizen};
                 });

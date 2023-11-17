@@ -8,5 +8,5 @@ export interface CitizenDetails {
 
     age: number;
 
-    city_id: string;
+    city_name: string;
 }

@@ -12,7 +12,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {CityListComponent} from "./city/view/city-list/city-list.component";
 import {CitizenListComponent} from "./citizen/view/citizen-list/citizen-list.component";
-import {CitizenViewComponent} from "./citizen/view/city-view/citizen-view.component";
+import {CitizenViewComponent} from "./citizen/view/citizen-view/citizen-view.component";
 import {CitizenEditComponent} from "./citizen/view/citizen-edit/citizen-edit.component";
 import {CitizenService} from "./citizen/service/citizen.service";
 import {CityService} from "./city/service/city.service";
