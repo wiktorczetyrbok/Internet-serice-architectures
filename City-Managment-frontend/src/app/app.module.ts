@@ -17,10 +17,10 @@ import {CitizenEditComponent} from "./citizen/view/citizen-edit/citizen-edit.com
 import {CitizenService} from "./citizen/service/citizen.service";
 import {CityService} from "./city/service/city.service";
 import {ErrorInterceptor} from "../error.interceptor";
+import {CityEditComponent} from "./city/view/city-edit/city-edit.component";
+import {CityViewComponent} from "./city/view/city-view/city-view.component";
 
-/**
- * Application main module.
- */
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +29,8 @@ import {ErrorInterceptor} from "../error.interceptor";
     NavComponent,
     MainComponent,
     CityListComponent,
+    CityEditComponent,
+    CityViewComponent,
     CitizenListComponent,
     CitizenViewComponent,
     CitizenEditComponent

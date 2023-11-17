@@ -1,20 +1,28 @@
 <article class="text--justified">
-    <header><h2>Cities</h2></header>
+  <header><h2>Cities</h2></header>
 
-    <table *ngIf="cities">
-        <thead>
-        <tr>
-            <th>Login</th>
-            <th>Delete</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let city of cities.cities">
-            <td>{{city.name}}</td>
-            <td>
-                <button (click)="onDelete(city)">Delete</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+  <table *ngIf="cities">
+    <thead>
+    <tr>
+      <th>Login</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let city of cities.cities">
+      <td>{{city.name}}</td>
+
+      <td>
+        <a [routerLink]="['/cities', city.id]">View</a>
+      </td>
+      <td>
+        <a [routerLink]="['/cities', city.id, 'edit']">Edit</a>
+      </td>
+      <td>
+        <button (click)="onDelete(city)">Delete</button>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
 </article>
