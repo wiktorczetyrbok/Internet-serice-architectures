@@ -13,7 +13,7 @@ public interface CitizenService {
 
     GetCitizensResponse getAllCitizens();
 
-    boolean deleteCitizen(UUID id);
+    void deleteCitizen(UUID id);
 
     GetCitizenResponse updateCitizen(UUID id, PutCitizenRequest putCitizenRequest);
 

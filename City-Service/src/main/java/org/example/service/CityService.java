@@ -13,7 +13,7 @@ public interface CityService {
 
     GetCityResponse getCityById(UUID id);
 
-    boolean deleteCity(UUID id);
+    void deleteCity(UUID id);
 
     GetCityResponse updateCity(UUID id, PutCityRequest putCityRequest);
 }

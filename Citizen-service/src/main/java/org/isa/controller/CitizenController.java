@@ -23,46 +23,28 @@ public class CitizenController {
     @PostMapping
     public ResponseEntity<Void> addNewCitizen(@RequestBody GetCitizenResponse getCitizenResponse) {
         getCitizenResponse.setId(UUID.randomUUID());
-        try {
-            citizenService.addCitizen(getCitizenResponse);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (CityNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
-        }
+        citizenService.addCitizen(getCitizenResponse);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<GetCitizenCityNameResponse> getCitizenById(@PathVariable UUID id) {
-        try {
-            GetCitizenCityNameResponse citizen = citizenService.getCitizenById(id);
-            return new ResponseEntity<>(citizen, HttpStatus.OK);
-        } catch (CitizenNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        GetCitizenCityNameResponse citizen = citizenService.getCitizenById(id);
+        return new ResponseEntity<>(citizen, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<GetCitizenResponse> updateCitizen(
             @PathVariable UUID id,
             @RequestBody PutCitizenRequest putCitizenRequest) {
-        try {
-            GetCitizenResponse updatedCitizen = citizenService.updateCitizen(id, putCitizenRequest);
-            return new ResponseEntity<>(updatedCitizen, HttpStatus.OK);
-        } catch (CitizenNotFoundException | CityNotFoundException e
-        ) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        GetCitizenResponse updatedCitizen = citizenService.updateCitizen(id, putCitizenRequest);
+        return new ResponseEntity<>(updatedCitizen, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCitizen(@PathVariable UUID id) {
-        boolean deleted = citizenService.deleteCitizen(id);
-        if (deleted) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        citizenService.deleteCitizen(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping

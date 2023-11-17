@@ -41,13 +41,10 @@ public class CitizenServiceImpl implements CitizenService {
     }
 
     @Override
-    public boolean deleteCitizen(UUID id) {
-        Citizen citizen = citizenRepository.findById(id).orElse(null);
-        if (citizen == null) {
-            return false;
-        }
+    public void deleteCitizen(UUID id) {
+        Citizen citizen = citizenRepository.findById(id)
+                .orElseThrow(() -> new CitizenNotFoundException("Citizen not found: " + id));
         citizenRepository.delete(citizen);
-        return true;
     }
 
     @Override
