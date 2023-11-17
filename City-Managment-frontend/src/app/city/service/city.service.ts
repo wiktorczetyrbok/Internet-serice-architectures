@@ -22,10 +22,10 @@ export class CityService {
   }
 
   getCity(uuid: string): Observable<CityDetails> {
-    return this.http.get<CityDetails>('/api/cities' + uuid);
+    return this.http.get<CityDetails>('/api/cities/' + uuid);
   }
 
   putCity(uuid: string, request: CityForm): Observable<any> {
-    return this.http.put('/api/city/' + uuid, request);
+    return this.http.put('/api/cities/' + uuid, request);
   }
 }
