@@ -8,34 +8,34 @@ import {City} from "../../model/city";
  * Navigable view with list of all cities.
  */
 @Component({
-    selector: 'app-city-list',
-    templateUrl: './city-list.component.html',
-    styleUrls: ['./city-list.component.css']
+  selector: 'app-city-list',
+  templateUrl: './city-list.component.html',
+  styleUrls: ['./city-list.component.css']
 })
 export class CityListComponent implements OnInit {
 
-    /**
-     * Available cities.
-     */
-    cities: Cities | undefined;
+  /**
+   * Available cities.
+   */
+  cities: Cities | undefined;
 
-    /**
-     * @param service cities service
-     */
-    constructor(private service: CityService) {
-    }
+  /**
+   * @param service cities service
+   */
+  constructor(private service: CityService) {
+  }
 
-    ngOnInit(): void {
-        this.service.getCities().subscribe(cities => this.cities = cities);
-    }
+  ngOnInit(): void {
+    this.service.getCities().subscribe(cities => this.cities = cities);
+  }
 
-    /**
-     * Deletes selected city.
-     *
-     * @param city city to be removed
-     */
-    onDelete(city: City): void {
-        this.service.deleteCity(city.id).subscribe(() => this.ngOnInit());
-    }
+  /**
+   * Deletes selected city.
+   *
+   * @param city city to be removed
+   */
+  onDelete(city: City): void {
+    this.service.deleteCity(city.id).subscribe(() => this.ngOnInit());
+  }
 
 }

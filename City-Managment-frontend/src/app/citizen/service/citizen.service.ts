@@ -4,7 +4,6 @@ import {Observable} from "rxjs";
 import {Citizens} from "../model/citizens";
 import {CitizenDetails} from "../model/citizen-details";
 import {CitizenForm} from "../model/citizen-form";
-import {City} from "../../city/model/city";
 
 @Injectable()
 export class CitizenService {

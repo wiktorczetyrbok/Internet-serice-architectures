@@ -1,12 +1,10 @@
-import {City} from "../../city/model/city";
-
 export interface CitizenDetails {
 
-    id: string;
+  id: string;
 
-    name: string;
+  name: string;
 
-    age: number;
+  age: number;
 
-    city_name: string;
+  city_name: string;
 }
