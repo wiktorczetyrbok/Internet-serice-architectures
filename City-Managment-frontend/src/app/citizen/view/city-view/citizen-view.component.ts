@@ -3,9 +3,6 @@ import {CitizenService} from "../../service/citizen.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CitizenDetails} from "../../model/citizen-details";
 
-/**
- * Preview of single citizen.
- */
 @Component({
     selector: 'app-citizen-view',
     templateUrl: './citizen-view.component.html',
@@ -13,17 +10,8 @@ import {CitizenDetails} from "../../model/citizen-details";
 })
 export class CitizenViewComponent implements OnInit {
 
-    /**
-     * Single citizen.
-     */
     citizen: CitizenDetails | undefined;
 
-    /**
-     *
-     * @param service citizen service
-     * @param route activated route
-     * @param router router
-     */
     constructor(private service: CitizenService, private route: ActivatedRoute, private router: Router) {
     }
 

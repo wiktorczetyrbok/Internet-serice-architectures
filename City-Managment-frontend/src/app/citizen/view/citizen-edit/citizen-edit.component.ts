@@ -12,29 +12,16 @@ import {Cities} from "../../../city/model/cities";
 })
 export class CitizenEditComponent implements OnInit {
 
-    /**
-     * Character's id.
-     */
+
     uuid: string | undefined;
 
-    /**
-     * Single citizen.
-     */
     citizen: CitizenForm | undefined;
 
-    /**
-     * Single citizen.
-     */
+
     original: CitizenForm | undefined;
 
     cities: Cities | undefined;
 
-    /**
-     * @param characterService citizen service
-     * @param cityService city service
-     * @param route activated route
-     * @param router router
-     */
     constructor(
         private citizenService: CitizenService,
         private cityService: CityService,
@@ -54,16 +41,13 @@ export class CitizenEditComponent implements OnInit {
                     this.citizen = {
                         name: citizen.name,
                         age: citizen.age,
-                        city: citizen.city.id
+                        city: citizen.city_id
                     };
                     this.original = {...this.citizen};
                 });
         });
     }
 
-    /**
-     * Updates citizen.
-     */
     onSubmit(): void {
         this.citizenService.putCity(this.uuid!, this.citizen!)
             .subscribe(() => this.router.navigate(['/citizens']));

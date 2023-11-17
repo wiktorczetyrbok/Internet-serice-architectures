@@ -10,14 +10,9 @@ import {Citizen} from "../../model/citizen";
 })
 export class CitizenListComponent implements OnInit {
 
-    /**
-     * Available characters.
-     */
+
     citizens: Citizens | undefined;
 
-    /**
-     * @param service characters service
-     */
     constructor(private service: CitizenService) {
     }
 
@@ -25,11 +20,6 @@ export class CitizenListComponent implements OnInit {
         this.service.getCitizens().subscribe(citizens => this.citizens = citizens);
     }
 
-    /**
-     * Deletes selected citizen.
-     *
-     * @param citizen
-     */
     onDelete(citizen: Citizen): void {
         this.service.deleteCitizen(citizen.id).subscribe(() => this.ngOnInit());
     }
