@@ -1,6 +1,7 @@
 <article class="text--justified">
   <header><h2>Citizens</h2></header>
 
+  <button  [routerLink]="['/citizens/add']">Add</button>
   <table *ngIf="citizens">
     <thead>
     <tr>
@@ -23,6 +24,7 @@
         <button (click)="onDelete(citizen)">Delete</button>
       </td>
     </tr>
+
     </tbody>
   </table>
 </article>

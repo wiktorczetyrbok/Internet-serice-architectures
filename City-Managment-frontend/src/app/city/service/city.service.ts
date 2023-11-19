@@ -28,4 +28,8 @@ export class CityService {
   putCity(uuid: string, request: CityForm): Observable<any> {
     return this.http.put('/api/cities/' + uuid, request);
   }
+
+  postCity(request: CityForm): Observable<any> {
+    return this.http.post('/api/cities', request);
+  }
 }

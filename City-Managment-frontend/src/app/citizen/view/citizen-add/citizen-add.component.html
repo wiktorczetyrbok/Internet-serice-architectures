@@ -1,0 +1,46 @@
+<article>
+  <header><h2>Add Citizen</h2></header>
+
+  <form #form="ngForm" (ngSubmit)="onSubmit()" class="container">
+    <div class="row">
+      <div class="col-4 p-2">
+        <div>
+          <label for="name">Name:</label>
+          <input [(ngModel)]="citizen.name" id="name" name="name" required/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4 p-2">
+        <div>
+          <label for="age">Age:</label>
+          <input [(ngModel)]="citizen.age" id="age" name="age" type="number" required/>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4 p-2">
+        <fieldset *ngIf="cities">
+          <legend>City:</legend>
+          <div *ngFor="let city of cities.cities">
+            <label>
+              <input [(ngModel)]="citizen.city" [value]="city.id" name="city" type="radio"/>
+              {{city.name}}
+            </label>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2 p-2">
+        <button type="submit">Add</button>
+      </div>
+      <div class="col-2 p-2">
+        <button type="button" (click)="form.resetForm()">Reset</button>
+      </div>
+    </div>
+  </form>
+</article>

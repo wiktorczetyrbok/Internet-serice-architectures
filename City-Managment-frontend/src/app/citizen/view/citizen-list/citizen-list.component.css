@@ -1,6 +1,56 @@
-.portrait {
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
-  object-position: 0 0;
+/* Apply styles to the entire article */
+article.text--justified {
+  margin: 20px; /* Add some margin around the article */
+}
+
+/* Style the header within the article */
+article.text--justified header {
+  background-color: #66c47f; /* Set a background color for the header */
+  color: #fff; /* Set text color for the header */
+  padding: 10px; /* Add padding to the header */
+  margin-bottom: 20px; /* Add some space between the header and the table */
+}
+
+/* Style the table within the article */
+article.text--justified table {
+  width: 100%;
+  border-collapse: collapse; /* Collapse the borders between table cells */
+}
+
+/* Style the table headers */
+article.text--justified th {
+  background-color: #333; /* Set a dark background color for table headers */
+  color: #fff; /* Set text color for table headers */
+  padding: 10px; /* Add padding to table headers */
+}
+
+/* Style the table cells */
+article.text--justified td {
+  border: 1px solid #ddd; /* Add a light border between table cells */
+  padding: 10px; /* Add padding to table cells */
+}
+
+/* Style the links within the table cells */
+article.text--justified a {
+  color: #007bff; /* Set link color */
+  text-decoration: none; /* Remove underline from links */
+}
+
+/* Style links on hover */
+article.text--justified a:hover {
+  text-decoration: underline; /* Underline links on hover */
+}
+
+/* Style the delete button */
+article.text--justified button {
+  background-color: #dc3545; /* Set a red background color for the delete button */
+  color: #fff; /* Set text color for the delete button */
+  padding: 8px 12px; /* Add padding to the delete button */
+  border: none; /* Remove button border */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+/* Style the delete button on hover */
+article.text--justified button:hover {
+  background-color: #bd2130; /* Darken the background color on hover */
 }

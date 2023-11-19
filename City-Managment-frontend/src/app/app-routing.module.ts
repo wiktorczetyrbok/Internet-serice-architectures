@@ -6,6 +6,8 @@ import {CitizenViewComponent} from "./citizen/view/citizen-view/citizen-view.com
 import {CitizenEditComponent} from "./citizen/view/citizen-edit/citizen-edit.component";
 import {CityViewComponent} from "./city/view/city-view/city-view.component";
 import {CityEditComponent} from "./city/view/city-edit/city-edit.component";
+import {CityAddComponent} from "./city/view/city-add/city-add.component";
+import {CitizenAddComponent} from "./citizen/view/citizen-add/citizen-add.component";
 
 /**
  * All available routes.
@@ -24,6 +26,10 @@ const routes: Routes = [
     path: "cities/:uuid/edit"
   },
   {
+    component: CityAddComponent,
+    path: "cities/add"
+  },
+  {
     component: CitizenListComponent,
     path: "citizens"
   },
@@ -35,6 +41,10 @@ const routes: Routes = [
   {
     component: CitizenEditComponent,
     path: "citizens/:uuid/edit"
+  },
+  {
+    component: CitizenAddComponent,
+    path: "citizens/add"
   }
 ];
 

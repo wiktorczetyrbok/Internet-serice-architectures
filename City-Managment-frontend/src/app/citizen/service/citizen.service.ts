@@ -31,4 +31,8 @@ export class CitizenService {
     return this.http.put('/api/citizens/' + uuid, request);
   }
 
+  postCity(request: CitizenForm): Observable<any> {
+    return this.http.post('/api/citizens', request);
+  }
+
 }
