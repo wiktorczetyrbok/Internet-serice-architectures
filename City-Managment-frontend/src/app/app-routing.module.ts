@@ -13,6 +13,15 @@ import {CitizenAddComponent} from "./citizen/view/citizen-add/citizen-add.compon
  * All available routes.
  */
 const routes: Routes = [
+
+  {
+    component: CitizenAddComponent,
+    path: "citizens/add"
+  },
+  {
+    component: CityAddComponent,
+    path: "cities/add"
+  },
   {
     component: CityListComponent,
     path: "cities"
@@ -25,10 +34,7 @@ const routes: Routes = [
     component: CityEditComponent,
     path: "cities/:uuid/edit"
   },
-  {
-    component: CityAddComponent,
-    path: "cities/add"
-  },
+
   {
     component: CitizenListComponent,
     path: "citizens"
@@ -41,10 +47,6 @@ const routes: Routes = [
   {
     component: CitizenEditComponent,
     path: "citizens/:uuid/edit"
-  },
-  {
-    component: CitizenAddComponent,
-    path: "citizens/add"
   }
 ];
 
