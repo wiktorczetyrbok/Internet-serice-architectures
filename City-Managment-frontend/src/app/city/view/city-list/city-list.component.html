@@ -12,9 +12,8 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let city of cities.cities">
+    <tr *ngFor="let city of cities.cities" class="city-row">
       <td>{{city.name}}</td>
-
       <td>
         <a [routerLink]="['/cities', city.id]">View</a>
       </td>
@@ -24,8 +23,8 @@
       <td>
         <button class="delete-button" (click)="onDelete(city)">Delete</button>
       </td>
-
     </tr>
     </tbody>
+
   </table>
 </article>

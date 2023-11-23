@@ -52,16 +52,28 @@ article.text--justified a:hover {
 
 }
 
-.delete-button {
-  background-color: #dc3545; /* Set a red background color for the add button */
-  color: #fff; /* Set text color for the delete button */
-  padding: 8px 12px; /* Add padding to the delete button */
-  border: none; /* Remove button border */
-  cursor: pointer; /* Change cursor on hover */
-  transition: background-color 0.5s ease; /* Add transition for background color */
-
-
+.city-row {
+  text-align: center;
 }
+
+.city-row td {
+  padding: 10px;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
 .add-button:hover {
   background-color: chartreuse;
+}
+
+.delete-button:hover {
+  background-color: indigo;
 }

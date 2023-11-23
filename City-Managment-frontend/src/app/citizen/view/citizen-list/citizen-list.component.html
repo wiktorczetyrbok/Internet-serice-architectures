@@ -1,5 +1,5 @@
 <article class="text--justified">
-  <header><h2>Citizens</h2></header>
+  <header><h1>Citizens</h1></header>
 
   <button class="add-button" [routerLink]="['/citizens', 'add']">Add</button>
   <table *ngIf="citizens">
@@ -12,7 +12,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let citizen of citizens.citizens">
+    <tr *ngFor="let citizen of citizens.citizens"class="citizen-row" >
       <td>{{citizen.name}}</td>
       <td>
         <a [routerLink]="['/citizens', citizen.id]">View</a>
