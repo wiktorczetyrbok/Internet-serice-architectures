@@ -33,8 +33,8 @@ export class CitizenAddComponent implements OnInit {
     }
 
     onSubmit(): void {
-     /*   this.citizenService.postCity(this.citizen)
-            .subscribe(() => this.router.navigate(['/citizens']));*/
+        this.citizenService.postCity(this.citizen)
+            .subscribe(() => this.router.navigate(['/citizens']));
     }
 
 }
