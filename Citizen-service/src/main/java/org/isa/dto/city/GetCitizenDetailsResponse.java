@@ -9,9 +9,10 @@ import java.util.UUID;
 
 @Data
 @Builder
-public class GetCitizenResponse {
+public class GetCitizenDetailsResponse {
     private UUID id;
     private String name;
+    private int age;
     @JsonProperty("city")
     private GetCityResponse city;
 }

@@ -1,6 +1,7 @@
 package org.isa.mapper;
 
 import org.isa.dto.city.GetCitizenCityNameResponse;
+import org.isa.dto.city.GetCitizenDetailsResponse;
 import org.isa.dto.city.GetCitizenResponse;
 import org.isa.dto.city.GetCitizensResponse;
 import org.isa.model.Citizen;
@@ -9,26 +10,26 @@ import org.isa.model.City;
 import java.util.List;
 
 public class CitizenMapper {
-    public static GetCitizenResponse mapToCitizenDto(Citizen citizen) {
+    public static GetCitizenResponse mapToGetCitizenResponse(Citizen citizen) {
 
         return GetCitizenResponse.builder()
-                .cityId(citizen.getCity().getId())
+                .city(CityMapper.mapToGetCityResponse(citizen.getCity()))
+                .id(citizen.getId())
+                .name(citizen.getName())
+                .build();
+    }
+
+    public static GetCitizenDetailsResponse mapToGetCitizenDetailsResponse(Citizen citizen) {
+
+        return GetCitizenDetailsResponse.builder()
+                .city(CityMapper.mapToGetCityResponse(citizen.getCity()))
                 .id(citizen.getId())
                 .name(citizen.getName())
                 .age(citizen.getAge())
                 .build();
     }
 
-    public static GetCitizenCityNameResponse mapToGetCitizenDto(Citizen citizen) {
-        return GetCitizenCityNameResponse.builder()
-                .cityName(citizen.getCity().getName())
-                .id(citizen.getId())
-                .name(citizen.getName())
-                .age(citizen.getAge())
-                .build();
-    }
-
-    public static Citizen mapToCitizen(GetCitizenResponse getCitizenResponse, City city) {
+    public static Citizen mapToCitizen(GetCitizenDetailsResponse getCitizenResponse, City city) {
         return Citizen.builder()
                 .id(getCitizenResponse.getId())
                 .city(city)
@@ -40,7 +41,7 @@ public class CitizenMapper {
     public static GetCitizensResponse mapToGetCitizensResponse(List<Citizen> citizens) {
         return GetCitizensResponse.builder()
                 .citizens(citizens.stream()
-                        .map(CitizenMapper::mapToCitizenDto)
+                        .map(CitizenMapper::mapToGetCitizenResponse)
                         .toList())
                 .build();
     }
