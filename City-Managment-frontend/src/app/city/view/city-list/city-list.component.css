@@ -1,74 +1,85 @@
-/* Apply styles to the entire article */
 article.text--justified {
-  margin: 20px; /* Add some margin around the article */
+  margin: 10px;
 }
-
-/* Style the header within the article */
 article.text--justified header {
-  background-color: #66c47f; /* Set a background color for the header */
-  color: #fff; /* Set text color for the header */
-  padding: 10px; /* Add padding to the header */
-  margin-bottom: 20px; /* Add some space between the header and the table */
+  background-color: #66c47f;
+  color: #fff;
+  padding: 5px;
+  margin-bottom: 20px;
 }
 
-/* Style the table within the article */
 article.text--justified table {
   width: 100%;
-  border-collapse: collapse; /* Collapse the borders between table cells */
+  border-collapse: collapse;
 }
 
-/* Style the table headers */
 article.text--justified th {
-  background-color: #333; /* Set a dark background color for table headers */
-  color: #fff; /* Set text color for table headers */
-  padding: 10px; /* Add padding to table headers */
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
 }
 
-/* Style the table cells */
 article.text--justified td {
-  border: 1px solid #ddd; /* Add a light border between table cells */
-  padding: 10px; /* Add padding to table cells */
+  border: 1px solid #ddd;
+  padding: 10px;
 }
 
-/* Style the links within the table cells */
 article.text--justified a {
-  color: #007bff; /* Set link color */
-  text-decoration: none; /* Remove underline from links */
+  color: #007bff;
+  text-decoration: none;
 }
 
-/* Style links on hover */
 article.text--justified a:hover {
-  text-decoration: underline; /* Underline links on hover */
+  text-decoration: underline;
 }
 
-/* Style the delete button */
 .add-button {
   background-color: darkgreen;
-  color: #fff; /* Set text color for the add button */
-  padding: 8px 12px; /* Add padding to the add button */
-  border: none; /* Remove button border */
-  cursor: pointer; /* Change cursor on hover */
-  transition: background-color 0.5s ease; /* Add transition for background color */
-
+  color: #fff;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  padding: 6px 12px;
+  margin-bottom: 10px;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  font-weight: bold;
 }
 
 .city-row {
   text-align: center;
+  text-decoration: none;
 }
 
 .city-row td {
   padding: 10px;
 }
 
+.city-name {
+  font-weight: bold;
+}
+header {
+  text-align: center;
+}
+
+header h2 {
+  font-size: 48px;
+}
 .delete-button {
   background-color: #dc3545;
   color: #fff;
-  padding: 8px 12px;
-  border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s ease;
+  display: inline-block;
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-weight: bold;
 }
-
 
 .add-button:hover {
   background-color: chartreuse;
@@ -76,4 +87,35 @@ article.text--justified a:hover {
 
 .delete-button:hover {
   background-color: indigo;
+}
+
+.action-row th {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.action-row th:hover {
+  color: #333;
+}
+
+thead {
+  background-color: #f2f2f2;
+}
+
+.action-link {
+  display: inline-block;
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none; /* Ensure no underline for links */
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+}
+
+.action-link:hover {
+  background-color: #ddd;
 }

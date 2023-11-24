@@ -1,6 +1,6 @@
 <article class="text--justified">
   <header><h2>Cities</h2></header>
-  <button class="add-button" [routerLink]="['/cities', 'add']">Add</button>
+  <button class="add-button" [routerLink]="['/cities', 'add']">Add new Citizen</button>
 
   <table *ngIf="cities">
     <thead>
@@ -13,12 +13,12 @@
     </thead>
     <tbody>
     <tr *ngFor="let city of cities.cities" class="city-row">
-      <td>{{city.name}}</td>
+      <td class="city-name">{{city.name}}</td>
       <td>
-        <a [routerLink]="['/cities', city.id]">View</a>
+        <a class="action-link" [routerLink]="['/cities', city.id]">View</a>
       </td>
       <td>
-        <a [routerLink]="['/cities', city.id, 'edit']">Edit</a>
+        <a class="action-link" [routerLink]="['/cities', city.id, 'edit']">Edit</a>
       </td>
       <td>
         <button class="delete-button" (click)="onDelete(city)">Delete</button>
