@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CityDetails} from "../../model/city-details";
 import {CityService} from "../../service/city.service";
+import {Citizen} from "../../../citizen/model/citizen";
 
 @Component({
   selector: 'app-city-view',
@@ -22,4 +23,7 @@ export class CityViewComponent implements OnInit {
     });
   }
 
+  onDelete(citizen: Citizen) {
+
+  }
 }
