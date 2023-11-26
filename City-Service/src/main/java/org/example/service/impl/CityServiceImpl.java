@@ -42,14 +42,11 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public boolean deleteCity(UUID id) {
-        City city = cityRepository.findById(id).orElse(null);
-        if (city == null) {
-            return false;
-        }
+    public void deleteCity(UUID id) {
+        City city = cityRepository.findById(id)
+                .orElseThrow(() -> new CityNotFoundException("City not found: " + id));
         cityRestRepository.delete(id);
         cityRepository.delete(city);
-        return true;
     }
 
     @Override

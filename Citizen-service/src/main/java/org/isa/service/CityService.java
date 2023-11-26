@@ -10,7 +10,7 @@ import java.util.UUID;
 public interface CityService {
     void addCity(GetCityResponse getCityResponse);
 
-    boolean deleteCity(UUID id);
+    void deleteCity(UUID id);
 
     GetCityResponse updateCity(UUID id, PutCityRequest putCityRequest);
 

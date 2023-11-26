@@ -30,12 +30,8 @@ public class CityController {
             @PathVariable UUID id,
             @RequestBody PutCityRequest putCityRequest
     ) {
-        try {
-            GetCityResponse updatedCity = cityService.updateCity(id, putCityRequest);
-            return new ResponseEntity<>(updatedCity, HttpStatus.OK);
-        } catch (CityNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        GetCityResponse updatedCity = cityService.updateCity(id, putCityRequest);
+        return new ResponseEntity<>(updatedCity, HttpStatus.OK);
     }
 
     @GetMapping
@@ -46,22 +42,14 @@ public class CityController {
 
     @GetMapping("/{id}")
     public ResponseEntity<GetCityResponse> getCityById(@PathVariable UUID id) {
-        try {
-            GetCityResponse city = cityService.getCityById(id);
-            return new ResponseEntity<>(city, HttpStatus.OK);
-        } catch (CityNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        GetCityResponse city = cityService.getCityById(id);
+        return new ResponseEntity<>(city, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCity(@PathVariable UUID id) {
-        boolean deleted = cityService.deleteCity(id);
-        if (deleted) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        cityService.deleteCity(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
 

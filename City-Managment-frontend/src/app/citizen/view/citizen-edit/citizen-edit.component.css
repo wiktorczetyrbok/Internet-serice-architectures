@@ -1,0 +1,84 @@
+article {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+header {
+    text-align: center;
+    background-color: beige;
+    border: 2px solid black;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.citizen-row {
+    margin-bottom: 15px;
+}
+
+.city-row .col-4 {
+    margin-left: -15px;
+    width: 50%;
+}
+
+
+.row > div {
+    width: 100%;
+}
+
+/* city-add.component.css */
+.row-submit {
+    display: flex;
+    justify-content: space-around; /* Adjust alignment as needed */
+}
+
+.row-submit .col-2 {
+    flex: 0 0 30%;
+}
+
+.row-submit button {
+    width: 100%;
+    padding: 8px; /* Adjust padding as needed */
+    font-size: 14px; /* Adjust font size as needed */
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 30%;
+    padding: 10px;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="button"] {
+    background-color: #dc3545;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button[type="button"]:hover {
+    background-color: #c82333;
+}

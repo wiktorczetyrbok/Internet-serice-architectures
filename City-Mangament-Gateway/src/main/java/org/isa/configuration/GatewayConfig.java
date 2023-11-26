@@ -29,6 +29,7 @@ public class GatewayConfig {
                         .uri(citizenUrl))
                 .route("fallback_route", r -> r
                         .path("/**")
+                        .filters(f -> f.rewritePath("/api(?<remaining>.*)", "/$\\{remaining}"))
                         .uri(host))
                 .build();
     }
