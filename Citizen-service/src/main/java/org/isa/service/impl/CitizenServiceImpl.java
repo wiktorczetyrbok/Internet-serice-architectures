@@ -2,8 +2,7 @@ package org.isa.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.isa.dto.city.GetCitizenCityNameResponse;
-import org.isa.dto.city.GetCitizenResponse;
+import org.isa.dto.city.GetCitizenDetailsResponse;
 import org.isa.dto.city.GetCitizensResponse;
 import org.isa.dto.city.PutCitizenRequest;
 import org.isa.exception.CitizenNotFoundException;
@@ -27,10 +26,11 @@ public class CitizenServiceImpl implements CitizenService {
     private final CityRepository cityRepository;
 
     @Override
-    public void addCitizen(GetCitizenResponse getCitizenResponse) {
-        City city = cityRepository.findById(getCitizenResponse.getCityId())
-                .orElseThrow(() -> new CityNotFoundException("City not found: " + getCitizenResponse.getCityId()));
-        Citizen citizen = CitizenMapper.mapToCitizen(getCitizenResponse, city);
+    public void addCitizen(PutCitizenRequest putCitizenRequest) {
+        City city = cityRepository.findById(putCitizenRequest.getCityId())
+                .orElseThrow(() -> new CityNotFoundException("City not found: " + putCitizenRequest.getCityId()));
+        Citizen citizen =
+                CitizenMapper.mapToCitizen(putCitizenRequest, city, UUID.randomUUID());
         citizenRepository.save(citizen);
     }
 
@@ -41,32 +41,41 @@ public class CitizenServiceImpl implements CitizenService {
     }
 
     @Override
-    public boolean deleteCitizen(UUID id) {
-        Citizen citizen = citizenRepository.findById(id).orElse(null);
-        if (citizen == null) {
-            return false;
-        }
+    public void deleteCitizen(UUID id) {
+        Citizen citizen = citizenRepository.findById(id)
+                .orElseThrow(() -> new CitizenNotFoundException("Citizen not found: " + id));
         citizenRepository.delete(citizen);
-        return true;
     }
 
     @Override
-    public GetCitizenResponse updateCitizen(UUID id, PutCitizenRequest putCitizenRequest) {
+    public GetCitizenDetailsResponse updateCitizen(UUID id, PutCitizenRequest putCitizenRequest) {
         Citizen existingCitizen = citizenRepository.findById(id)
                 .orElseThrow(() -> new CitizenNotFoundException("Citizen not found: " + id));
+        existingCitizen.setCity(cityRepository.findById(putCitizenRequest.getCityId())
+                .orElseThrow(() -> new CityNotFoundException("City not found: " + id)));
+
         existingCitizen.setName(putCitizenRequest.getName());
         existingCitizen.setAge(putCitizenRequest.getAge());
 
         citizenRepository.save(existingCitizen);
 
-        return CitizenMapper.mapToCitizenDto(existingCitizen);
+        return CitizenMapper.mapToGetCitizenDetailsResponse(existingCitizen);
     }
 
     @Override
-    public GetCitizenCityNameResponse getCitizenById(UUID uuid) {
+    public GetCitizenDetailsResponse getCitizenById(UUID uuid) {
         Citizen citizen = citizenRepository.findById(uuid)
                 .orElseThrow(() -> new CitizenNotFoundException("Citizen not found: " + uuid));
-        return CitizenMapper.mapToGetCitizenDto(citizen);
+        return CitizenMapper.mapToGetCitizenDetailsResponse(citizen);
+    }
+
+    @Override
+    public GetCitizensResponse getCitizenByCity(UUID id) {
+        City city = cityRepository.findById(id)
+                .orElseThrow(() -> new CityNotFoundException("City not found: " + id));
+
+
+        return CitizenMapper.mapToGetCitizensResponse(city.getCitizens());
     }
 }
 

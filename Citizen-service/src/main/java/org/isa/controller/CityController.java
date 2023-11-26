@@ -3,7 +3,6 @@ package org.isa.controller;
 import lombok.RequiredArgsConstructor;
 import org.isa.dto.citizen.GetCityResponse;
 import org.isa.dto.citizen.PutCityRequest;
-import org.isa.exception.CityNotFoundException;
 import org.isa.service.CityService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,28 +28,14 @@ public class CityController {
             @PathVariable UUID id,
             @RequestBody PutCityRequest putCityRequest
     ) {
-        try {
-            GetCityResponse updatedCity = cityService.updateCity(id, putCityRequest);
-            return new ResponseEntity<>(updatedCity, HttpStatus.OK);
-        } catch (CityNotFoundException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @GetMapping
-    public ResponseEntity<List<GetCityResponse>> getAllCities() {
-        List<GetCityResponse> cities = cityService.getAllCities();
-        return new ResponseEntity<>(cities, HttpStatus.OK);
+        GetCityResponse updatedCity = cityService.updateCity(id, putCityRequest);
+        return new ResponseEntity<>(updatedCity, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCity(@PathVariable UUID id) {
-        boolean deleted = cityService.deleteCity(id);
-        if (deleted) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        cityService.deleteCity(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
 

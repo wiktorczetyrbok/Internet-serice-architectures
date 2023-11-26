@@ -1,0 +1,93 @@
+.city-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Set background color to white */
+}
+
+.city-card header {
+    text-align: center;
+    background-color: #f0e68c; /* Set background color to khaki */
+    border: 2px solid #000;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+header h1 {
+    font-size: 40px;
+    margin: 0;
+    color: #333; /* Set text color to a dark shade */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 20px; /* Adjust font size for better readability */
+}
+
+.label {
+    font-weight: bold;
+}
+
+.info {
+    color: #333;
+}
+
+.label-citizens {
+    font-weight: bold;
+    font-size: 24px; /* Adjust font size for better readability */
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.citizen-name {
+    font-weight: bold;
+}
+
+.action-link {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.city-actions button {
+    margin-top: 5px;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.city-actions button:hover {
+    background-color: #eee;
+}
+
+.edit-button {
+    background-color: #28a745;
+    color: #fff; /* White text for better contrast */
+}
+
+.delete-button {
+    background-color: #dc3545; /* Red color for the Delete button */
+    color: #fff; /* White text for better contrast */
+}
