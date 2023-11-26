@@ -14,50 +14,50 @@ import {CitizenAddComponent} from "./citizen/view/citizen-add/citizen-add.compon
  */
 const routes: Routes = [
 
-  {
-    component: CitizenAddComponent,
-    path: "citizens/add"
-  },
-  {
-    component: CityAddComponent,
-    path: "cities/add"
-  },
-  {
-    component: CityListComponent,
-    path: "cities"
-  },
-  {
-    component: CityViewComponent,
-    path: "cities/:uuid"
-  },
-  {
-    component: CityEditComponent,
-    path: "cities/:uuid/edit"
-  },
+    {
+        component: CitizenAddComponent,
+        path: "citizens/add"
+    },
+    {
+        component: CityAddComponent,
+        path: "cities/add"
+    },
+    {
+        component: CityListComponent,
+        path: "cities"
+    },
+    {
+        component: CityViewComponent,
+        path: "cities/:uuid"
+    },
+    {
+        component: CityEditComponent,
+        path: "cities/:uuid/edit"
+    },
 
-  {
-    component: CitizenListComponent,
-    path: "citizens"
-  },
-  {
-    component: CitizenViewComponent,
-    path: "citizens/:uuid"
-  }
-  ,
-  {
-    component: CitizenEditComponent,
-    path: "citizens/:uuid/edit"
-  }
+    {
+        component: CitizenListComponent,
+        path: "citizens"
+    },
+    {
+        component: CitizenViewComponent,
+        path: "citizens/:uuid"
+    }
+    ,
+    {
+        component: CitizenEditComponent,
+        path: "citizens/:uuid/edit"
+    }
 ];
 
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes)
-  ],
-  exports: [
-    RouterModule
-  ]
+    imports: [
+        RouterModule.forRoot(routes)
+    ],
+    exports: [
+        RouterModule
+    ]
 })
 export class AppRoutingModule {
 

@@ -1,47 +1,47 @@
 <article *ngIf="citizen">
-  <header><h2>Edit citizen</h2></header>
+    <header><h2>Edit citizen</h2></header>
 
-  <form #form="ngForm" (ngSubmit)="onSubmit()" class="container">
-    <div class="row">
-      <div class="col-4 p-2">
-        <div>
-          <label for="name">Name:</label>
-          <input [(ngModel)]="citizen.name" id="name" name="name"/>
+    <form #form="ngForm" (ngSubmit)="onSubmit()" class="container">
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="name">Name:</label>
+                    <input [(ngModel)]="citizen.name" id="name" name="name"/>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-4 p-2">
-        <div>
-          <label for="age">Age:</label>
-          <input [(ngModel)]="citizen.age" id="age" name="age"/>
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="age">Age:</label>
+                    <input [(ngModel)]="citizen.age" id="age" name="age"/>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
 
-    <div class="row">
-      <div class="col-4 p-2">
-        <fieldset *ngIf="cities">
-          <legend>City:</legend>
-          <div *ngFor="let city of cities.cities">
-            <label>
-              <input [(ngModel)]="citizen.city" [value]="city.id" name="city" type="radio"/>
-              {{city.name}}
-            </label>
-          </div>
-        </fieldset>
-      </div>
-    </div>
+        <div class="row">
+            <div class="col-4 p-2">
+                <fieldset *ngIf="cities">
+                    <legend>City:</legend>
+                    <div *ngFor="let city of cities.cities">
+                        <label>
+                            <input [(ngModel)]="citizen.city_id" [value]="city.id" name="city" type="radio"/>
+                            {{city.name}}
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
 
-    <div class="row">
-      <div class="col-2 p-2">
-        <button type="submit">Update</button>
-      </div>
-      <div class="col-2 p-2">
-        <button (click)="form.resetForm(original)" type="button">Reset</button>
-      </div>
-    </div>
-  </form>
+        <div class="row">
+            <div class="col-2 p-2">
+                <button type="submit">Update</button>
+            </div>
+            <div class="col-2 p-2">
+                <button (click)="form.resetForm(original)" type="button">Reset</button>
+            </div>
+        </div>
+    </form>
 </article>

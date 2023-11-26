@@ -7,7 +7,7 @@ import org.isa.dto.city.PutCitizenRequest;
 import java.util.UUID;
 
 public interface CitizenService {
-    void addCitizen(GetCitizenDetailsResponse getCitizenDetailsResponse);
+    void addCitizen(PutCitizenRequest putCitizenRequest);
 
 
     GetCitizensResponse getAllCitizens();

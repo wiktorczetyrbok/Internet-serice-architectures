@@ -1,20 +1,20 @@
 div {
-  background-color: #66736a; /* Set a gray background color */
-  min-height: 100vh; /* Ensure the container takes at least the full height of the viewport */
-  display: flex;
-  flex-direction: column;
+    background-color: #66736a; /* Set a gray background color */
+    min-height: 100vh; /* Ensure the container takes at least the full height of the viewport */
+    display: flex;
+    flex-direction: column;
 }
 
 div > * {
-  margin: 0 auto;
-  max-width: 800px; /* Adjust the max-width as needed */
-  width: 100%;
-  box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 800px; /* Adjust the max-width as needed */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 div > app-header,
 div > app-nav,
 div > app-main,
 div > app-footer {
-  padding: 20px;
+    padding: 20px;
 }

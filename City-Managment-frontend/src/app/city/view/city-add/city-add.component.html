@@ -1,33 +1,33 @@
 <!-- city-add.component.html -->
 <article>
-  <header><h2>Add City</h2></header>
+    <header><h2>Add City</h2></header>
 
-  <form #form="ngForm" (ngSubmit)="onSubmit()" class="container">
-    <div class="row">
-      <div class="col-4 p-2">
-        <div>
-          <label for="name">Name:</label>
-          <input [(ngModel)]="city.name" id="name" name="name" required/>
+    <form #form="ngForm" (ngSubmit)="onSubmit()" class="container">
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="name">Name:</label>
+                    <input [(ngModel)]="city.name" id="name" name="name" required/>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-4 p-2">
-        <div>
-          <label for="area">Area:</label>
-          <input [(ngModel)]="city.area" id="area" name="area" required/>
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="area">Area:</label>
+                    <input [(ngModel)]="city.area" id="area" name="area" required/>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="row-submit">
-      <div class="col-2 p-2">
-        <button type="submit">Add</button>
-      </div>
-      <div class="col-2 p-2">
-        <button type="button" (click)="form.resetForm()">Reset</button>
-      </div>
-    </div>
-  </form>
+        <div class="row-submit">
+            <div class="col-2 p-2">
+                <button type="submit">Add</button>
+            </div>
+            <div class="col-2 p-2">
+                <button (click)="form.resetForm()" type="button">Reset</button>
+            </div>
+        </div>
+    </form>
 </article>

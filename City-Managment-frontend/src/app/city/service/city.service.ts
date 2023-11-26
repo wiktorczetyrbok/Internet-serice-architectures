@@ -6,7 +6,6 @@ import {CityDetails} from "../model/city-details";
 import {CityForm} from "../model/city-form";
 import {Citizens} from "../../citizen/model/citizens";
 import {map} from "rxjs/operators";
-import {Citizen} from "../../citizen/model/citizen";
 
 @Injectable({
     providedIn: 'root'
@@ -27,8 +26,9 @@ export class CityService {
     getCity(uuid: string): Observable<CityDetails> {
         return this.http.get<CityDetails>('/api/cities/' + uuid).pipe(
             mergeMap((city: CityDetails) => {
-                return this.http.get<Citizens>('/api/citizens', { params: { city_id: uuid } }).pipe(
-                    map((citizens: Citizens) => {city.citizens = citizens;
+                return this.http.get<Citizens>('/api/citizens', {params: {city_id: uuid}}).pipe(
+                    map((citizens: Citizens) => {
+                        city.citizens = citizens;
                         return city;
                     })
                 );

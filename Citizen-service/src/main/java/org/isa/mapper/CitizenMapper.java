@@ -1,13 +1,14 @@
 package org.isa.mapper;
 
-import org.isa.dto.city.GetCitizenCityNameResponse;
 import org.isa.dto.city.GetCitizenDetailsResponse;
 import org.isa.dto.city.GetCitizenResponse;
 import org.isa.dto.city.GetCitizensResponse;
+import org.isa.dto.city.PutCitizenRequest;
 import org.isa.model.Citizen;
 import org.isa.model.City;
 
 import java.util.List;
+import java.util.UUID;
 
 public class CitizenMapper {
     public static GetCitizenResponse mapToGetCitizenResponse(Citizen citizen) {
@@ -35,6 +36,15 @@ public class CitizenMapper {
                 .city(city)
                 .name(getCitizenResponse.getName())
                 .age(getCitizenResponse.getAge())
+                .build();
+    }
+
+    public static Citizen mapToCitizen(PutCitizenRequest putCitizenRequest, City city, UUID uuid) {
+        return Citizen.builder()
+                .id(uuid)
+                .city(city)
+                .name(putCitizenRequest.getName())
+                .age(putCitizenRequest.getAge())
                 .build();
     }
 

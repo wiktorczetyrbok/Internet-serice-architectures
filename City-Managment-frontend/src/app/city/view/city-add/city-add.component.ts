@@ -1,8 +1,8 @@
 // city-add.component.ts
-import { Component, OnInit } from '@angular/core';
-import { CityService } from '../../../city/service/city.service';
-import { Router } from '@angular/router';
-import { CityForm } from '../../model/city-form';
+import {Component, OnInit} from '@angular/core';
+import {CityService} from '../../../city/service/city.service';
+import {Router} from '@angular/router';
+import {CityForm} from '../../model/city-form';
 
 @Component({
     selector: 'app-city-add',
@@ -19,7 +19,8 @@ export class CityAddComponent implements OnInit {
     constructor(
         private cityService: CityService,
         private router: Router
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
     }

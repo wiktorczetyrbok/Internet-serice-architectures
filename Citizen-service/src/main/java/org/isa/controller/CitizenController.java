@@ -18,9 +18,9 @@ public class CitizenController {
     private final CitizenService citizenService;
 
     @PostMapping
-    public ResponseEntity<Void> addNewCitizen(@RequestBody GetCitizenDetailsResponse getCitizenDetailsResponse) {
-        getCitizenDetailsResponse.setId(UUID.randomUUID());
-        citizenService.addCitizen(getCitizenDetailsResponse);
+    public ResponseEntity<Void> addNewCitizen(@RequestBody PutCitizenRequest putCitizenRequest) {
+        System.out.println(putCitizenRequest);
+        citizenService.addCitizen(putCitizenRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

@@ -1,13 +1,12 @@
-import {Citizen} from "../../citizen/model/citizen";
 import {Citizens} from "../../citizen/model/citizens";
 
 export interface CityDetails {
 
-  id: string;
+    id: string;
 
-  name: string;
+    name: string;
 
-  area: number;
+    area: number;
 
-  citizens: Citizens
+    citizens: Citizens
 }

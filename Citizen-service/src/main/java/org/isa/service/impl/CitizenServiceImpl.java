@@ -26,10 +26,11 @@ public class CitizenServiceImpl implements CitizenService {
     private final CityRepository cityRepository;
 
     @Override
-    public void addCitizen(GetCitizenDetailsResponse getCitizenDetailsResponse) {
-        City city = cityRepository.findById(getCitizenDetailsResponse.getCity().getId())
-                .orElseThrow(() -> new CityNotFoundException("City not found: " + getCitizenDetailsResponse.getCity().getId()));
-        Citizen citizen = CitizenMapper.mapToCitizen(getCitizenDetailsResponse, city);
+    public void addCitizen(PutCitizenRequest putCitizenRequest) {
+        City city = cityRepository.findById(putCitizenRequest.getCityId())
+                .orElseThrow(() -> new CityNotFoundException("City not found: " + putCitizenRequest.getCityId()));
+        Citizen citizen =
+                CitizenMapper.mapToCitizen(putCitizenRequest, city, UUID.randomUUID());
         citizenRepository.save(citizen);
     }
 
@@ -50,6 +51,9 @@ public class CitizenServiceImpl implements CitizenService {
     public GetCitizenDetailsResponse updateCitizen(UUID id, PutCitizenRequest putCitizenRequest) {
         Citizen existingCitizen = citizenRepository.findById(id)
                 .orElseThrow(() -> new CitizenNotFoundException("Citizen not found: " + id));
+        existingCitizen.setCity(cityRepository.findById(putCitizenRequest.getCityId())
+                .orElseThrow(() -> new CityNotFoundException("City not found: " + id)));
+
         existingCitizen.setName(putCitizenRequest.getName());
         existingCitizen.setAge(putCitizenRequest.getAge());
 

@@ -1,4 +1,4 @@
 export interface CityForm {
-  name: string;
-  area: number;
+    name: string;
+    area: number;
 }

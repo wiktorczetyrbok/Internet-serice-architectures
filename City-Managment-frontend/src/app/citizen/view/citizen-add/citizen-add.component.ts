@@ -1,11 +1,10 @@
 // citizen-add.component.ts
-import { Component, OnInit } from '@angular/core';
-import { CitizenService } from '../../service/citizen.service';
-import { Router } from '@angular/router';
-import { CitizenForm } from '../../model/citizen-form';
-import { CityService } from "../../../city/service/city.service";
-import { Cities } from "../../../city/model/cities";
-import {City} from "../../../city/model/city";
+import {Component, OnInit} from '@angular/core';
+import {CitizenService} from '../../service/citizen.service';
+import {Router} from '@angular/router';
+import {CitizenForm} from '../../model/citizen-form';
+import {CityService} from "../../../city/service/city.service";
+import {Cities} from "../../../city/model/cities";
 
 @Component({
     selector: 'app-citizen-add',
@@ -15,9 +14,9 @@ import {City} from "../../../city/model/city";
 export class CitizenAddComponent implements OnInit {
 
     citizen: CitizenForm = {
-      age: 0,
-      city: {} as City,
-      name: ''
+        age: 0,
+        city_id: '',
+        name: ''
     };
 
     cities: Cities | undefined;
@@ -26,7 +25,8 @@ export class CitizenAddComponent implements OnInit {
         private citizenService: CitizenService,
         private cityService: CityService,
         private router: Router
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         this.cityService.getCities()

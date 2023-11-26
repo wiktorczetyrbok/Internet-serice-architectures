@@ -1,33 +1,33 @@
 <article *ngIf="city">
-  <header><h2>Edit city</h2></header>
+    <header><h2>Edit city</h2></header>
 
-  <form #form="ngForm" (ngSubmit)="onSubmit()" class="container">
-    <div class="row">
-      <div class="col-4 p-2">
-        <div>
-          <label for="name">Name:</label>
-          <input [(ngModel)]="city.name" id="name" name="name"/>
+    <form #form="ngForm" (ngSubmit)="onSubmit()" class="container">
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="name">Name:</label>
+                    <input [(ngModel)]="city.name" id="name" name="name"/>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-4 p-2">
-        <div>
-          <label for="age">Area:</label>
-          <input [(ngModel)]="city.area" id="age" name="age"/>
+        <div class="row">
+            <div class="col-4 p-2">
+                <div>
+                    <label for="age">Area:</label>
+                    <input [(ngModel)]="city.area" id="age" name="age"/>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
 
-    <div class="row">
-      <div class="col-2 p-2">
-        <button type="submit">Update</button>
-      </div>
-      <div class="col-2 p-2">
-        <button (click)="form.resetForm(original)" type="button">Reset</button>
-      </div>
-    </div>
-  </form>
+        <div class="row">
+            <div class="col-2 p-2">
+                <button type="submit">Update</button>
+            </div>
+            <div class="col-2 p-2">
+                <button (click)="form.resetForm(original)" type="button">Reset</button>
+            </div>
+        </div>
+    </form>
 </article>

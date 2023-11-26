@@ -5,48 +5,48 @@ import {Cities} from "../../../city/model/cities";
 import {CityForm} from "../../model/city-form";
 
 @Component({
-  selector: 'app-citizen-edit',
-  templateUrl: './city-edit.component.html',
-  styleUrls: ['./city-edit.component.css']
+    selector: 'app-citizen-edit',
+    templateUrl: './city-edit.component.html',
+    styleUrls: ['./city-edit.component.css']
 })
 export class CityEditComponent implements OnInit {
 
 
-  uuid: string | undefined;
+    uuid: string | undefined;
 
-  city: CityForm | undefined;
+    city: CityForm | undefined;
 
 
-  original: CityForm | undefined;
+    original: CityForm | undefined;
 
-  cities: Cities | undefined;
+    cities: Cities | undefined;
 
-  constructor(
-    private cityService: CityService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {
-  }
+    constructor(
+        private cityService: CityService,
+        private route: ActivatedRoute,
+        private router: Router
+    ) {
+    }
 
-  ngOnInit() {
-    this.route.params.subscribe(params => {
+    ngOnInit() {
+        this.route.params.subscribe(params => {
 
-      this.cityService.getCity(params['uuid'])
-        .subscribe(city => {
-          this.uuid = city.id;
-          this.city = {
-            name: city.name,
-            area: city.area,
-          };
+            this.cityService.getCity(params['uuid'])
+                .subscribe(city => {
+                    this.uuid = city.id;
+                    this.city = {
+                        name: city.name,
+                        area: city.area,
+                    };
 
-          this.original = {...this.city};
+                    this.original = {...this.city};
+                });
         });
-    });
-  }
+    }
 
-  onSubmit(): void {
-    this.cityService.putCity(this.uuid!, this.city!)
-      .subscribe(() => this.router.navigate(['/cities']));
-  }
+    onSubmit(): void {
+        this.cityService.putCity(this.uuid!, this.city!)
+            .subscribe(() => this.router.navigate(['/cities']));
+    }
 
 }

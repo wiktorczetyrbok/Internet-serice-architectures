@@ -1,33 +1,37 @@
 <article *ngIf="city" class="city-card">
-  <header>
-    <h1>{{ city.name }}</h1>
-  </header>
+    <header>
+        <h1>{{ city.name }}</h1>
+    </header>
 
-  <div class="container">
-    <div class="info-row">
-      <div class="label">Area</div>
-      <div class="info">{{ city.area }}</div>
+    <div class="container">
+        <div class="info-row">
+            <div class="label">Area</div>
+            <div class="info">{{ city.area }}</div>
+        </div>
+
+        <div class="label">Citizens</div>
+        <div *ngIf="city.citizens">
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>View</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let citizen of city.citizens.citizens" class="citizen-row">
+                    <td class="citizen-name">{{ citizen.name }}</td>
+                    <td>
+                        <a [routerLink]="['/citizens', citizen.id]" class="action-link">View</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="city-actions">
+            <button [routerLink]="['/cities', city.id, 'edit']" class="action-link">Edit</button>
+
+            <button (click)="onDelete(city)" class="delete-button">Delete</button>
+        </div>
     </div>
-
-    <div class="label">Citizens</div>
-    <div *ngIf="city.citizens">
-      <table>
-        <thead>
-        <tr>
-          <th>Name</th>
-          <th>View</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let citizen of city.citizens.citizens" class="citizen-row">
-          <td class="citizen-name">{{ citizen.name }}</td>
-          <td>
-            <a class="action-link" [routerLink]="['/citizens', citizen.id]">View</a>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-
-  </div>
 </article>

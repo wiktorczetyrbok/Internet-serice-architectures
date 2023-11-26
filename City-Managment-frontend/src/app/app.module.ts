@@ -19,44 +19,44 @@ import {CityService} from "./city/service/city.service";
 import {ErrorInterceptor} from "../error.interceptor";
 import {CityEditComponent} from "./city/view/city-edit/city-edit.component";
 import {CityViewComponent} from "./city/view/city-view/city-view.component";
-import { CitizenAddComponent } from './citizen/view/citizen-add/citizen-add.component';
-import { CityAddComponent } from './city/view/city-add/city-add.component';
+import {CitizenAddComponent} from './citizen/view/citizen-add/citizen-add.component';
+import {CityAddComponent} from './city/view/city-add/city-add.component';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FooterComponent,
-    HeaderComponent,
-    NavComponent,
-    MainComponent,
-    CityListComponent,
-    CityEditComponent,
-    CityViewComponent,
-    CityAddComponent,
-    CitizenListComponent,
-    CitizenViewComponent,
-    CitizenEditComponent,
-    CitizenAddComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [
-    CityService,
-    CitizenService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor,
-      multi: true
-    }
-  ],
-  bootstrap: [
-    AppComponent
-  ]
+    declarations: [
+        AppComponent,
+        FooterComponent,
+        HeaderComponent,
+        NavComponent,
+        MainComponent,
+        CityListComponent,
+        CityEditComponent,
+        CityViewComponent,
+        CityAddComponent,
+        CitizenListComponent,
+        CitizenViewComponent,
+        CitizenEditComponent,
+        CitizenAddComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule
+    ],
+    providers: [
+        CityService,
+        CitizenService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorInterceptor,
+            multi: true
+        }
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule {
 

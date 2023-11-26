@@ -1,30 +1,30 @@
 <article class="text--justified">
-  <header><h1>Citizens</h1></header>
+    <header><h1>Citizens</h1></header>
 
-  <button class="add-button" [routerLink]="['/citizens', 'add']">Add new Citizen</button>
-  <table *ngIf="citizens">
-    <thead >
-    <tr>
-      <th>Name</th>
-      <th>View</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let citizen of citizens.citizens"class="citizen-row" >
-      <td class="citizen-name">{{citizen.name}}</td>
-      <td>
-        <a class="action-link" [routerLink]="['/citizens', citizen.id]" >View</a>
-      </td>
-      <td>
-        <a [routerLink]="['/citizens', citizen.id, 'edit']" class="action-link">Edit</a>
-      </td>
-      <td>
-        <button class="delete-button" (click)="onDelete(citizen)">Delete</button>
-      </td>
-    </tr>
+    <button [routerLink]="['/citizens', 'add']" class="add-button">Add new Citizen</button>
+    <table *ngIf="citizens">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>View</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let citizen of citizens.citizens" class="citizen-row">
+            <td class="citizen-name">{{citizen.name}}</td>
+            <td>
+                <a [routerLink]="['/citizens', citizen.id]" class="action-link">View</a>
+            </td>
+            <td>
+                <a [routerLink]="['/citizens', citizen.id, 'edit']" class="action-link">Edit</a>
+            </td>
+            <td>
+                <button (click)="onDelete(citizen)" class="delete-button">Delete</button>
+            </td>
+        </tr>
 
-    </tbody>
-  </table>
+        </tbody>
+    </table>
 </article>
