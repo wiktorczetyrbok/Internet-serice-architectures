@@ -46,7 +46,7 @@ export class CityEditComponent implements OnInit {
 
     onSubmit(): void {
         this.cityService.putCity(this.uuid!, this.city!)
-            .subscribe(() => this.router.navigate(['/cities']));
+            .subscribe(() => this.router.navigate(['/cities', this.uuid]));
     }
 
 }

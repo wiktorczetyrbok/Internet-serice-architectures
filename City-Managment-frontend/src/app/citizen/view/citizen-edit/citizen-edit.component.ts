@@ -50,7 +50,7 @@ export class CitizenEditComponent implements OnInit {
 
     onSubmit(): void {
         this.citizenService.putCity(this.uuid!, this.citizen!)
-            .subscribe(() => this.router.navigate(['/citizens']));
+            .subscribe(() => this.router.navigate(['/citizens', this.uuid]));
     }
 
 }
