@@ -64,6 +64,15 @@ public class CitizenServiceImpl implements CitizenService {
                 .orElseThrow(() -> new CitizenNotFoundException("Citizen not found: " + uuid));
         return CitizenMapper.mapToGetCitizenDetailsResponse(citizen);
     }
+
+    @Override
+    public GetCitizensResponse getCitizenByCity(UUID id) {
+        City city = cityRepository.findById(id)
+                .orElseThrow(() -> new CityNotFoundException("City not found: " + id));
+
+
+        return CitizenMapper.mapToGetCitizensResponse(city.getCitizens());
+    }
 }
 
 

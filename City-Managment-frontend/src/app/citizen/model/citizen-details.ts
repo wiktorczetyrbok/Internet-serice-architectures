@@ -1,3 +1,5 @@
+import {City} from "../../city/model/city";
+
 export interface CitizenDetails {
 
   id: string;
@@ -6,5 +8,5 @@ export interface CitizenDetails {
 
   age: number;
 
-  city_name: string;
+  city: City;
 }

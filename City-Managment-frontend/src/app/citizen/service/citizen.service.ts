@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import { map } from 'rxjs/operators';
 import {Citizens} from "../model/citizens";
 import {CitizenDetails} from "../model/citizen-details";
 import {CitizenForm} from "../model/citizen-form";
@@ -18,8 +19,11 @@ export class CitizenService {
 
 
   getCitizen(uuid: string): Observable<CitizenDetails> {
-
-    return this.http.get<CitizenDetails>('/api/citizens/' + uuid);
+    return this.http.get<CitizenDetails>('/api/citizens/' + uuid).pipe(
+      map((citizen: CitizenDetails) => {
+        return citizen;
+      })
+    );
   }
 
 

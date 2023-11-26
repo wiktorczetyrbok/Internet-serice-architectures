@@ -12,13 +12,18 @@ export class CitizenViewComponent implements OnInit {
 
   citizen: CitizenDetails | undefined;
 
-  constructor(private service: CitizenService, private route: ActivatedRoute, private router: Router) {
+
+  constructor(private service: CitizenService,
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.service.getCitizen(params['uuid'])
-        .subscribe(citizen => this.citizen = citizen)
+        .subscribe(citizen => {
+          this.citizen = citizen
+        })
     });
   }
 

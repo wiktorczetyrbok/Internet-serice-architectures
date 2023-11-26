@@ -6,7 +6,10 @@
   <div class="container">
     <div class="info-row">
       <div class="label">City</div>
-      <div class="info">{{citizen.city_name}}</div>
+      <div>
+        <a [routerLink]="['/cities', citizen.city.id]" class="info">{{citizen.city.name}}
+        </a>
+      </div>
     </div>
 
     <div class="info-row">

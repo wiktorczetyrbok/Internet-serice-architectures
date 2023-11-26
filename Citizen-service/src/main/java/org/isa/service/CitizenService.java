@@ -17,4 +17,6 @@ public interface CitizenService {
     GetCitizenDetailsResponse updateCitizen(UUID id, PutCitizenRequest putCitizenRequest);
 
     GetCitizenDetailsResponse getCitizenById(UUID uuid);
+
+    GetCitizensResponse getCitizenByCity(UUID uuid);
 }

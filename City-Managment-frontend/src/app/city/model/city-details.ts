@@ -1,4 +1,5 @@
 import {Citizen} from "../../citizen/model/citizen";
+import {Citizens} from "../../citizen/model/citizens";
 
 export interface CityDetails {
 
@@ -8,5 +9,5 @@ export interface CityDetails {
 
   area: number;
 
-  citizens: Citizen[]
+  citizens: Citizens
 }

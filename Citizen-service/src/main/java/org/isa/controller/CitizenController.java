@@ -45,8 +45,14 @@ public class CitizenController {
     }
 
     @GetMapping
-    public ResponseEntity<GetCitizensResponse> getAllCitizens() {
-        GetCitizensResponse citizens = citizenService.getAllCitizens();
+    public ResponseEntity<GetCitizensResponse> getCitizens(@RequestParam(name = "city_id", required = false) UUID cityId) {
+        GetCitizensResponse citizens;
+        if (cityId != null) {
+            citizens = citizenService.getCitizenByCity(cityId);
+        } else {
+            citizens = citizenService.getAllCitizens();
+        }
+
         return new ResponseEntity<>(citizens, HttpStatus.OK);
     }
 }

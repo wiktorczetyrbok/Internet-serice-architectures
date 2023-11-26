@@ -17,7 +17,7 @@ export class CitizenListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getCitizens().subscribe(citizens => this.citizens = citizens);
+    this.service.getCitizens().subscribe(citizens =>{this.citizens = citizens} );
   }
 
   onDelete(citizen: Citizen): void {

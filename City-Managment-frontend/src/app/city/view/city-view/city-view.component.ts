@@ -19,7 +19,9 @@ export class CityViewComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.service.getCity(params['uuid'])
-        .subscribe(city => this.city = city)
+        .subscribe(city => {
+          this.city = city
+        })
     });
   }
 

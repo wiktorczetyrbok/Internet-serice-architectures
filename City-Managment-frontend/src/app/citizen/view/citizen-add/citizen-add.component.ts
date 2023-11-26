@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CitizenForm } from '../../model/citizen-form';
 import { CityService } from "../../../city/service/city.service";
 import { Cities } from "../../../city/model/cities";
+import {City} from "../../../city/model/city";
 
 @Component({
     selector: 'app-citizen-add',
@@ -14,9 +15,9 @@ import { Cities } from "../../../city/model/cities";
 export class CitizenAddComponent implements OnInit {
 
     citizen: CitizenForm = {
-        name: '',
-        age: 0,
-        city: ''
+      age: 0,
+      city: {} as City,
+      name: ''
     };
 
     cities: Cities | undefined;

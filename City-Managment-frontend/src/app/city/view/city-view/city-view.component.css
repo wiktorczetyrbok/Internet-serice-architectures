@@ -4,34 +4,33 @@
   padding: 20px;
   margin: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff; /* Set background color to white */
 }
 
 .city-card header {
-  margin-bottom: 15px;
-}
-
-
-.container {
-  display: flex;
-  flex-direction: column;
-}
-header {
   text-align: center;
-  background-color: beige; /* Set background color to beige */
-  border: 2px solid black; /* Add a black border */
-  padding: 10px; /* Add some padding for better visual appearance */
+  background-color: #f0e68c; /* Set background color to khaki */
+  border: 2px solid #000;
+  padding: 10px;
+  margin-bottom: 15px;
 }
 
 header h1 {
   font-size: 40px;
-  margin: 0; /* Remove default margin for better alignment */
+  margin: 0;
+  color: #333; /* Set text color to a dark shade */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
 }
 
 .info-row {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  font-size: 34px;
+  font-size: 20px; /* Adjust font size for better readability */
 }
 
 .label {
@@ -39,5 +38,32 @@ header h1 {
 }
 
 .info {
-  color: black;
+  color: #333;
+}
+
+.label-citizens {
+  font-weight: bold;
+  font-size: 24px; /* Adjust font size for better readability */
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.citizen-name {
+  font-weight: bold;
+}
+
+.action-link {
+  text-decoration: none;
+  color: #007bff; /* Set link color to a standard blue */
 }
