@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+  city-service:
+    image: city-service:1.0.0-SNAPSHOT
+    restart: always
+    environment:
+      CITY_URL: "http://city:8080"
+
+  citizen-service:
+    image: citizen-service:1.0.0-SNAPSHOT
+    restart: always
+    environment:
+      CITIZEN_URL: "http://citizen:8080"
+
+  city-mangament-gateway:
+    image: city-mangament-gateway:1.0.0-SNAPSHOT
+    restart: always
+    environment:
+      CITY_URL: "http://city-service:8080"
+      CITIZEN_URL: "http://citizen-service:8080"
+      GATEWAY_HOST: "city-mangament-gateway:8080"
+
+  city-managment-frontend:
+    image: city-managment-frontend:1.0.0-SNAPSHOT
+    restart: always
+    environment:
+      API_URL: http://city-mangament-gateway:8080/api
+    ports:
+      - "8087:80"
