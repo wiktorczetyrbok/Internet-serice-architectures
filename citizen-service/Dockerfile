@@ -14,7 +14,7 @@ ENV VERSION="1.0.0-SNAPSHOT"
 
 ENV SERVER_PORT=8080
 
-ENV SPRING_DATASOURCE_URL=jdbc:h2:mem:Citizen-service
+ENV SPRING_DATASOURCE_URL=jdbc:h2:mem:citizen-service
 ENV SPRING_DATASOURCE_DRIVERCLASSNAME=org.h2.Driver
 ENV SPRING_DATASOURCE_USERNAME=saENV SPRING_DATASOURCE_PASSWORD=password
 
@@ -26,6 +26,6 @@ ENV SPRING_H2_CONSOLE_enabled=true
 
 EXPOSE 8080
 
-COPY target/Citizen-service-${VERSION}.jar /opt/Citizen-service/Citizen-service.jar
+COPY target/citizen-service-${VERSION}.jar /opt/citizen-service/citizen-service.jar
 
-CMD ["java", "-jar", "/opt/Citizen-service/Citizen-service.jar"]
+CMD ["java", "-jar", "/opt/citizen-service/citizen-service.jar"]
