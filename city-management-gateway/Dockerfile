@@ -1,6 +1,6 @@
 FROM eclipse-temurin:17.0.6_10-jre
 
-LABEL org.opencontainers.image.title="city-mangament-gateway"
+LABEL org.opencontainers.image.title="city-management-gateway"
 LABEL org.opencontainers.image.authors="wiktor czetyrbok"
 LABEL org.opencontainers.image.url="https://github.com/kasztanators/Internet-serice-architectures"
 LABEL org.opencontainers.image.version="1.0.0-SNAPSHOT"
@@ -27,6 +27,6 @@ ENV SPRING_H2_CONSOLE_enabled=true
 
 EXPOSE 8080
 
-COPY target/City-Mangament-Gateway-${VERSION}.jar /opt/City-Mangament-Gateway/City-Mangament-Gateway.jar
+COPY target/city-management-gateway-${VERSION}.jar /opt/city-management-gateway/city-management-gateway.jar
 
-CMD ["java", "-jar", "/opt/City-Mangament-Gateway/City-Mangament-Gateway.jar"]
+CMD ["java", "-jar", "/opt/city-management-gateway/city-management-gateway.jar"]
