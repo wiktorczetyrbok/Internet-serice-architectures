@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
 
 function main() {
-  cd ./City-Managment-frontend/
+  echo "Build script of main folder"
+  cd ./city-management-gateway/
   sh ./build.sh
   cd ../
-  cd ./City-Mangament-Gateway/
+  cd ./city-management-gateway/
   sh ./build.sh
   cd ../
-  cd ./Citizen-Service/
+  cd ./citizen-service/
   sh ./build.sh
   cd ../
-  cd ./City-service/
+  cd ./city-service/
   sh ./build.sh
   cd ../
+  echo "Closing build script at main folder..."
 }
 
 main "$@"
