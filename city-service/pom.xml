@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org</groupId>
-	<artifactId>CityService</artifactId>
+	<artifactId>city-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CityService</name>
 	<description>project for internet-service-architectures</description>
