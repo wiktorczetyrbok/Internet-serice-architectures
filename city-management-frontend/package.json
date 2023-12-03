@@ -1,6 +1,6 @@
 {
   "name": "@pl.edu.pg.eti.kask/city-management-frontend",
-  "version": "1.0.0-SNAPSHOT",
+  "version": "0.0.1-SNAPSHOT",
   "description": "City management Angular based UI.",
   "scripts": {
     "ng": "ng",
