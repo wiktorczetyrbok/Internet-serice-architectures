@@ -1,9 +1,9 @@
 FROM eclipse-temurin:17.0.6_10-jre
 
-LABEL org.opencontainers.image.title="city-management"
+LABEL org.opencontainers.image.title="citizen-service"
 LABEL org.opencontainers.image.authors="wiktor czetyrbok"
 LABEL org.opencontainers.image.url="https://github.com/kasztanators/Internet-serice-architectures"
-LABEL org.opencontainers.image.version="1.0.0-SNAPSHOT"
+LABEL org.opencontainers.image.version="0.0.1-SNAPSHOT"
 LABEL org.opencontainers.image.description="citizen service."
 LABEL org.opencontainers.image.licenses="MIT"
 
