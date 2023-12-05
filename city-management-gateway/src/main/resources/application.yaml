@@ -3,19 +3,19 @@ server:
 
 isa:
   gateway:
-    host: http://localhost:8083
+    host: http://city-management-gateway:8083  # Update to use the service name
 
   city:
-    url: http://localhost:8080
+    url: http://city-service:8080  # Update to use the service name
   citizen:
-    url: http://localhost:8081
+    url: http://citizen-service:8080  # Update to use the service name
 
 spring:
   cloud:
     gateway:
       routes:
         - id: cors_route
-          uri: http://localhost:4200
+          uri: http://localhost:8087
           predicates:
             - Path=/service/**
           filters:
@@ -30,4 +30,3 @@ spring:
                 - DELETE
               allowedHeaders: '*'
               maxAge: 30
-

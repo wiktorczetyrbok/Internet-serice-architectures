@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8082
 
 spring:
   datasource:
@@ -15,7 +15,7 @@ spring:
       enabled: true
 
 isa:
-  city:
+  citizen-service:
     url: http://localhost:8081/
     url.delete: /cities/{id}
     url.put: /cities/{id}
