@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 public class CityRestApiUrl {
-    @Value("${isa.city.url.delete}")
+    @Value("${isa.citizen-service.url.delete}")
     private String deleteUrl;
-    @Value("${isa.city.url.put}")
+    @Value("${isa.citizen-service.url.put}")
     private String putUrl;
-    @Value("${isa.city.url.post}")
+    @Value("${isa.citizen-service.url.post}")
     private String postUrl;
 }
