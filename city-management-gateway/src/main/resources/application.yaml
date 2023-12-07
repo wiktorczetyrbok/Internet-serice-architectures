@@ -3,12 +3,12 @@ server:
 
 isa:
   gateway:
-    host: http://city-management-gateway:8083  # Update to use the service name
+    host: http://city-management-gateway:8080/
 
   city:
-    url: http://city-service:8080  # Update to use the service name
+    url: http://city-service:8080/
   citizen:
-    url: http://citizen-service:8080  # Update to use the service name
+    url: http://citizen-service:8080/
 
 spring:
   cloud:

@@ -27,7 +27,7 @@ ENV SPRING_H2_CONSOLE_enabled=true
 
 ENV CITIZEN_URL=http://localhost:8081
 
-EXPOSE 8082
+EXPOSE 8080
 
 
 COPY target/city-service-${VERSION}.jar /opt/city-service/city-service.jar

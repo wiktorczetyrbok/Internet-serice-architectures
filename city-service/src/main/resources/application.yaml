@@ -16,7 +16,7 @@ spring:
 
 isa:
   citizen-service:
-    url: http://localhost:8081/
+    url: http://citizen-service:8080/
     url.delete: /cities/{id}
     url.put: /cities/{id}
     url.post: /cities
