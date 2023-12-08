@@ -17,4 +17,4 @@ ENV API_URL http://localhost:8080/api
 EXPOSE 80
 
 ADD dist/city-management-frontend /usr/share/nginx/html/
-ADD docker/etc/nginx/templates/default.conf.template /etc/nginx/templates/
+ADD docker/etc/nginx/templates/ /etc/nginx/templates/

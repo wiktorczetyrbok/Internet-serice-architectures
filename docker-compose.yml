@@ -31,6 +31,6 @@ services:
     image: city-management-frontend:0.0.1-SNAPSHOT
     restart: always
     environment:
-      API_URL: http://city-management-gateway:8083/api
+      API_URL: http://city-management-gateway:8080
     ports:
       - "8087:80"
