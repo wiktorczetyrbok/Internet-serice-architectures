@@ -1,9 +1,11 @@
 package org.example.repository.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.example.configuration.CityRestApiUrl;
 import org.example.dto.GetCityResponse;
 import org.example.dto.PutCityRequest;
 import org.example.repository.CityRestRepository;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -11,19 +13,17 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.UUID;
 
 @Repository
+@RequiredArgsConstructor
 public class CityRestRepositoryImpl implements CityRestRepository {
 
     private final RestTemplate restTemplate;
     private final CityRestApiUrl restApiUrl;
+    private final DiscoveryClient discoveryClient;
 
-    public CityRestRepositoryImpl(RestTemplate restTemplate, CityRestApiUrl restApiUrl) {
-        this.restTemplate = restTemplate;
-        this.restApiUrl = restApiUrl;
-    }
 
     @Override
     public void delete(UUID id) {
-        restTemplate.delete(restApiUrl.getDeleteUrl(), id);
+        restTemplate.delete(getCitizenServiceUri() + restApiUrl.getDeleteUrl(), id);
     }
 
     @Override
@@ -33,11 +33,18 @@ public class CityRestRepositoryImpl implements CityRestRepository {
                 .buildAndExpand(id)
                 .toUriString();
 
-        restTemplate.put(url, putCityRequest);
+        restTemplate.put(getCitizenServiceUri() + url, putCityRequest);
     }
 
     @Override
     public void addCity(GetCityResponse getCityResponse) {
-        restTemplate.postForLocation(restApiUrl.getPostUrl(), getCityResponse);
+        restTemplate.postForLocation(getCitizenServiceUri() +restApiUrl.getPostUrl(), getCityResponse);
+    }
+    private String getCitizenServiceUri() {
+        return discoveryClient.getInstances("citizen-service").stream()
+                .findFirst()
+                .orElseThrow()
+                .getUri()
+                .toString();
     }
 }
