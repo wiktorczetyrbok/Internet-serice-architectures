@@ -15,7 +15,7 @@ spring:
     gateway:
       routes:
         - id: cors_route
-          uri: http://localhost:4200
+          uri: http://localhost:8087
           predicates:
             - Path=/service/**
           filters:
@@ -30,4 +30,3 @@ spring:
                 - DELETE
               allowedHeaders: '*'
               maxAge: 30
-

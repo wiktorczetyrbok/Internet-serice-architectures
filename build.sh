@@ -5,7 +5,7 @@ function main() {
   cd ./city-management-gateway/
   sh ./build.sh
   cd ../
-  cd ./city-management-gateway/
+  cd ./city-management-frontend/
   sh ./build.sh
   cd ../
   cd ./citizen-service/
