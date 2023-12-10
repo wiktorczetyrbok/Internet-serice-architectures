@@ -1,0 +1,32 @@
+server:
+  port: 8083
+
+isa:
+  gateway:
+    host: http://localhost:8083
+
+  city:
+    url: http://localhost:8080
+  citizen:
+    url: http://localhost:8081
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: cors_route
+          uri: http://localhost:8087
+          predicates:
+            - Path=/service/**
+          filters:
+            - RemoveRequestHeader=Host
+          metadata:
+            cors:
+              allowedOrigins: '*'
+              allowedMethods:
+                - GET
+                - POST
+                - PUT
+                - DELETE
+              allowedHeaders: '*'
+              maxAge: 30
