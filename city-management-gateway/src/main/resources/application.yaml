@@ -3,12 +3,12 @@ server:
 
 isa:
   gateway:
-    host: http://city-management-gateway:8080/
+    host: http://localhost:8083
 
   city:
-    url: http://city-service:8080/
+    url: http://localhost:8080
   citizen:
-    url: http://citizen-service:8080/
+    url: http://localhost:8081
 
 spring:
   cloud:

@@ -2,18 +2,50 @@ version: '3'
 
 services:
 
+  city-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: city_db
+      POSTGRES_USER: city_user
+      POSTGRES_PASSWORD: city_password
+    ports:
+      - "5432:5432"
+
+  citizen-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: citizen_db
+      POSTGRES_USER: citizen_user
+      POSTGRES_PASSWORD: citizen_password
+    ports:
+      - "5433:5432"
+
   city-service:
     image: city-service:0.0.1-SNAPSHOT
     restart: always
     environment:
-      CITIZEN_URL: "http://city-service:8080"
-
+      SPRING_DATASOURCE_URL: jdbc:postgresql://city-db:5432/city_db
+      SPRING_DATASOURCE_DRIVERCLASSNAME: org.postgresql.Driver
+      SPRING_DATASOURCE_USERNAME: city_user
+      SPRING_DATASOURCE_PASSWORD: city_password
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQLDialect
+      SPRING_JPA_DEFER_DATASOURCE_INITIALIZATION: true
+      ISA_CITIZEN_SERVICE_URL: http://citizen-service:8080/
     ports:
       - "8081:8080"
 
   citizen-service:
     image: citizen-service:0.0.1-SNAPSHOT
     restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://citizen-db:5432/citizen_db
+      SPRING_DATASOURCE_DRIVERCLASSNAME: org.postgresql.Driver
+      SPRING_DATASOURCE_USERNAME: citizen_user
+      SPRING_DATASOURCE_PASSWORD: citizen_password
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQLDialect
+      SPRING_JPA_DEFER_DATASOURCE_INITIALIZATION: true
     ports:
       - "8082:8080"
 
@@ -21,9 +53,10 @@ services:
     image: city-management-gateway:0.0.1-SNAPSHOT
     restart: always
     environment:
-      CITY_URL: "http://city-service:8080"
-      CITIZEN_URL: "http://citizen-service:8080"
-      GATEWAY_HOST: "http://city-management-gateway:8080"
+      ISA_CITY_URL: http://city-service:8080/
+      ISA_CITIZEN_URL: http://citizen-service:8080/
+      ISA_GATEWAY_HOST: http://city-management-gateway:8080/
+
     ports:
       - "8083:8080"
 
@@ -31,6 +64,6 @@ services:
     image: city-management-frontend:0.0.1-SNAPSHOT
     restart: always
     environment:
-      API_URL: http://city-management-gateway:8080
+      API_URL: http://city-management-gateway:8080/api
     ports:
       - "8087:80"

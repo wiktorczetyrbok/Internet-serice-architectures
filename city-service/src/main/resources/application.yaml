@@ -10,13 +10,10 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     defer-datasource-initialization: true
-  h2:
-    console:
-      enabled: true
 
 isa:
   citizen-service:
-    url: http://citizen-service:8080/
+    url: http://localhost:8081/
     url.delete: /cities/{id}
     url.put: /cities/{id}
     url.post: /cities
